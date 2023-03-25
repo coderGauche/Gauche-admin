@@ -46,7 +46,7 @@ module.exports = {
 			customFooterPrefixs: "Input ISSUES prefix:",
 			footer: "List any ISSUES by this change. E.g.: #31, #34:\n",
 			confirmCommit: "Are you sure you want to proceed with the commit above?"
-			// 中文版
+			// 中文版 1
 			// type: "选择你要提交的类型 :",
 			// scope: "选择一个提交范围（可选）:",
 			// customScope: "请输入自定义的提交范围 :",
