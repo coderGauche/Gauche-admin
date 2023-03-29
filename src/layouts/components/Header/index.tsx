@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-29 23:12:05
+ * @LastEditTime: 2023-03-29 23:52:47
  * @FilePath: /vite-project/src/layouts/components/Header/index.tsx
  */
 import { Layout } from "antd";
@@ -20,6 +20,7 @@ const LayoutHeader = () => {
 				<BreadcrumbNav />
 			</div>
 			<div className="header-ri">
+				<span className="username">Hooks</span>
 				<AvatarIcon />
 			</div>
 		</Header>
