@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-25 00:46:40
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-25 00:47:16
+ * @LastEditTime: 2023-03-29 14:32:29
  * @FilePath: /vite-project/src/typings/global.d.ts
  */
 // * Vite

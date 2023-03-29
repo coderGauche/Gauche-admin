@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "noUnusedLocals": false,
     "types": ["vite/client", "node"],
     // 解析非相对模块名的基准目录
     "baseUrl": "./",

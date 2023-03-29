@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 01:39:31
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-26 01:40:19
+ * @LastEditTime: 2023-03-28 13:56:38
  * @FilePath: /vite-project/tailwind.config.js
  */
 /** @type {import('tailwindcss').Config} */
@@ -15,5 +15,8 @@ module.exports = {
 	variants: {
 		extend: {}
 	},
-	plugins: []
+	plugins: [],
+	corePlugins: {
+		preflight: false
+	}
 };

@@ -1,0 +1,32 @@
+.ant-layout {
+	height: 100%;
+	.ant-layout-sider {
+		flex: 0 0 220px !important;
+		max-width: 220px !important;
+		& ::-webkit-scrollbar {
+			background-color: #001529;
+		}
+		& ::-webkit-scrollbar-thumb {
+			background-color: #41444b;
+		}
+	}
+	.ant-layout-content {
+		margin: 10px 13px;
+		background-color: #ffffff;
+		/* stylelint-disable-next-line order/properties-order */
+		padding: 20px;
+		border-radius: 4px;
+		/* stylelint-disable-next-line order/properties-order */
+		box-sizing: border-box;
+		overflow: auto;
+		overflow-x: hidden;
+		box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
