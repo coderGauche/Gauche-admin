@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 00:03:10
+ * @LastEditTime: 2023-03-30 00:41:59
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import { useEffect, useState } from "react";
@@ -16,18 +16,42 @@ import {
 	ShoppingOutlined,
 	AppstoreOutlined
 } from "@ant-design/icons";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu } from "antd";
 import Logo from "./components/Logo";
+
+import type { MenuProps } from "antd";
+
 import "./index.less";
 
 const LayoutMenu = () => {
 	const { pathname } = useLocation();
 	const [menuActive, setMenuActive] = useState(pathname);
-	const [menuList] = useState([
+	const [subMenuActive, setSubMenuActive] = useState("");
+	/**
+	 * React Router v6的hooks 跳转
+	 * 在v6之前的版本中可以直接使用history.push()和history.replace()来传递参数。
+       在v6中使用useNavigate()实现路由跳转，但类组件中不能使用hooks函数。
+       在v6版本中，HashRouter在页面刷新后不会导致路由state参数的丢失。
+	 */
+	const navigate = useNavigate();
+	// 找出点击的路由
+	const getSubMenuActive = () => {
+		menuList.forEach(item => {
+			if (item.children) {
+				item.children.forEach(child => {
+					if (child.key === pathname) {
+						setSubMenuActive(item.key);
+					}
+				});
+			}
+		});
+	};
+	const menuList = [
 		{
 			label: "首页",
 			key: "/home",
+			danger: false,
 			icon: <HomeOutlined />
 		},
 		{
@@ -42,12 +66,12 @@ const LayoutMenu = () => {
 			children: [
 				{
 					label: "使用 Hooks",
-					key: "/table/useHooks",
+					key: "/proTable/useHooks",
 					icon: <AppstoreOutlined />
 				},
 				{
 					label: "使用 Component",
-					key: "/table/useComponent",
+					key: "/proTable/useComponent",
 					icon: <AppstoreOutlined />
 				}
 			]
@@ -145,9 +169,10 @@ const LayoutMenu = () => {
 				}
 			]
 		}
-	]);
+	];
 
 	useEffect(() => {
+		getSubMenuActive();
 		setMenuActive(pathname);
 	}, [pathname]);
 
@@ -161,10 +186,31 @@ const LayoutMenu = () => {
 	// 	} as MenuItem;
 	// };
 
+	//点击当前菜单
+	const clickMenu: MenuProps["onClick"] = e => {
+		//实现跳转操作
+		navigate(e.key);
+	};
+
+	// 展开subMenu
+	const openSubMenu = (openKeys: any) => {
+		if (openKeys.length == 0) return setSubMenuActive("");
+		setSubMenuActive(openKeys[1]);
+	};
+
 	return (
 		<div className="menu">
 			<Logo></Logo>
-			<Menu theme="dark" mode="inline" triggerSubMenuAction="click" selectedKeys={[menuActive]} items={menuList}></Menu>
+			<Menu
+				theme="dark"
+				mode="inline"
+				triggerSubMenuAction="click"
+				openKeys={[subMenuActive]}
+				selectedKeys={[menuActive]}
+				items={menuList}
+				onClick={clickMenu}
+				onOpenChange={openSubMenu}
+			></Menu>
 		</div>
 	);
 };

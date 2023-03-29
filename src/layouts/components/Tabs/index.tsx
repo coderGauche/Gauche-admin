@@ -2,26 +2,23 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 00:05:23
+ * @LastEditTime: 2023-03-30 00:45:12
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs } from "antd";
-import { HomeFilled } from "@ant-design/icons";
+// import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./index.less";
 
 const LayoutTabs = () => {
 	const { pathname } = useLocation();
 	const [activeValue, setActiveValue] = useState<string>(pathname);
+	const navigate = useNavigate();
 	const [tabsList] = useState([
 		{
-			label: `首页 ${(<HomeFilled />)}`,
+			label: "首页",
 			key: "/home"
-		},
-		{
-			label: "超级表格",
-			key: "/proTable"
 		},
 		{
 			label: "数据大屏",
@@ -29,7 +26,15 @@ const LayoutTabs = () => {
 		},
 		{
 			label: "使用 Hooks",
-			key: "/useHooks"
+			key: "/proTable/useHooks"
+		},
+		{
+			label: "使用 Component",
+			key: "/proTable/useComponent"
+		},
+		{
+			label: "数据可视化",
+			key: "/dashboard/dataVisualize"
 		}
 	]);
 
@@ -38,7 +43,7 @@ const LayoutTabs = () => {
 	}, [pathname]);
 
 	const tabsClick = (path: string) => {
-		console.log(path);
+		navigate(path);
 	};
 
 	const delTabs = (path: string) => {
