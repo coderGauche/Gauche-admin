@@ -1,3 +1,10 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-28 15:10:26
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-03-29 17:19:41
+ * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
+ */
 import { Tabs } from "antd";
 import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
@@ -83,16 +90,18 @@ const LayoutTabs = () => {
 	};
 
 	return (
-		<Tabs
-			activeKey={activeValue}
-			onChange={tabsClick}
-			hideAdd
-			type="editable-card"
-			items={tabsList}
-			onEdit={path => {
-				delTabs(path as string);
-			}}
-		/>
+		<div className="tabs">
+			<Tabs
+				activeKey={activeValue}
+				onChange={tabsClick}
+				hideAdd
+				type="editable-card"
+				items={tabsList}
+				onEdit={path => {
+					delTabs(path as string);
+				}}
+			/>
+		</div>
 	);
 };
 

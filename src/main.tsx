@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-28 11:54:25
+ * @LastEditTime: 2023-03-29 23:00:35
  * @FilePath: /vite-project/src/main.tsx
  */
 import React from "react";
@@ -10,6 +10,7 @@ import ReactDOM from "react-dom/client";
 import "normalize.css";
 import "@/language/index";
 import "./tailwind.css";
+import "@/styles/reset.less";
 import "virtual:svg-icons-register";
 
 import { App } from "@/App";

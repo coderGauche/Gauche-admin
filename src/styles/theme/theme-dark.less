@@ -1,5 +1,5 @@
 /* 自定义 antd 暗黑模式样式 */
-@dark-main-bg-color: #141414;
+@dark-main-bg-color: #ffffff;
 @dark-bg-color: #1f1f1f;
 @dark-border-color: #414243;
 @dark-text-color: #d9d9d9;
@@ -70,9 +70,11 @@ body {
 		.ant-layout-header {
 			height: 55px;
 			padding: 0 40px 0 20px;
+			background-color: @light-bg-color !important;
+			border-color: @light-border-header-color !important;
 			.icon-style,
 			.username {
-				color: @dark-text-color !important;
+				color: @light-text-color !important;
 			}
 		}
 		.footer {

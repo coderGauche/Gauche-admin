@@ -1,12 +1,18 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-28 15:10:26
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-03-29 23:12:05
+ * @FilePath: /vite-project/src/layouts/components/Header/index.tsx
+ */
 import { Layout } from "antd";
 import AvatarIcon from "./components/AvatarIcon";
 import CollapseIcon from "./components/CollapseIcon";
 import BreadcrumbNav from "./components/BreadcrumbNav";
-import "./index.scss";
-
-const { Header } = Layout;
+import "./index.less";
 
 const LayoutHeader = () => {
+	const { Header } = Layout;
 	return (
 		<Header>
 			<div className="header-lf">
