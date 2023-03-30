@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 16:27:45
+ * @LastEditTime: 2023-03-30 22:11:51
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";

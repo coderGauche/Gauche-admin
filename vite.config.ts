@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 16:29:16
+ * @LastEditTime: 2023-03-30 22:30:22
  * @FilePath: /vite-project/vite.config.ts
  */
 import { ConfigEnv, UserConfig, defineConfig, loadEnv } from "vite";
@@ -60,11 +60,16 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
 			host: "0.0.0.0", // 服务器主机名，如果允许外部访问，可设置为"0.0.0.0"
 			open: viteEnv.VITE_OPEN,
 			port: viteEnv.VITE_PORT,
+			cors: true,
+			https: false,
 			proxy: {
 				"/api": {
-					target: "http://codercba.com:9002",
-					// target: "https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e",
-					secure: false,
+					// target: "http://codercba.com:9002",
+					target: "https://mock.mengxuegu.com/mock/62abda3212c1416424630a45",
+					// *是 Vite 开发服务器的一个选项，它用于修改目标 URL 的来源。它允许浏览器向不同于提供 Vite 打包的域发送请求，
+					// *这对于代理到不同域上托管的后端 API 很有用。特别是在开发时，可以使用 "changeOrigin" 将请求代理到本地运行的后端服务，
+					// *以便进行开发和调试。
+					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, "")
 				}
 			}
