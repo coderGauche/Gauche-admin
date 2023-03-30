@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 17:16:12
+ * @LastEditTime: 2023-03-30 22:43:17
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet, useLocation } from "react-router-dom";
@@ -16,7 +16,7 @@ import "./index.less";
 
 const { Sider, Content } = Layout;
 
-const LayoutIndex = (props: { name: string }) => {
+const LayoutIndex = (props: { name?: string }) => {
 	console.log(props);
 
 	const { pathname } = useLocation();

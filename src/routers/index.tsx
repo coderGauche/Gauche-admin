@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 17:43:36
+ * @LastEditTime: 2023-03-30 22:43:55
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { useRoutes, Navigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import type { RouteObject } from "react-router-dom";
 import lazyLoad from "@/routers/utils/lazyLoad";
 import NotFound from "@/components/ErrorMessage/404";
 import LayoutIndex from "@/layouts";
+import Login from "@/views/login/index";
 
 export const rootRouter: RouteObject[] = [
 	{
@@ -20,10 +21,10 @@ export const rootRouter: RouteObject[] = [
 	},
 	{
 		path: "/login",
-		element: lazyLoad(React.lazy(() => import("@/views/login/index")))
+		element: <Login />
 	},
 	{
-		element: <LayoutIndex name="我是参数" />,
+		element: <LayoutIndex />,
 		children: [
 			{
 				path: "/home",
