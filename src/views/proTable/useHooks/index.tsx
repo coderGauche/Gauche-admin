@@ -2,19 +2,26 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:36:06
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 17:42:13
+ * @LastEditTime: 2023-03-31 00:54:19
  * @FilePath: /vite-project/src/views/proTable/useHooks/index.tsx
  */
 import { Table } from "antd";
 import React, { memo } from "react";
 import type { ReactNode } from "react";
+import { searchRoute } from "@/utils/util";
 
 import "./index.less";
+import { useLocation } from "react-router-dom";
+import { rootRouter } from "@/routers";
 
 interface IProps {
 	children?: ReactNode;
 }
-const UseHooks02: React.FC<IProps> = () => {
+const UseHooks: React.FC<IProps> = () => {
+	const location = useLocation();
+
+	const res = searchRoute(location.pathname, rootRouter);
+	console.log(res);
 	const dataSource = [
 		{
 			key: "1",
@@ -49,4 +56,4 @@ const UseHooks02: React.FC<IProps> = () => {
 	];
 	return <Table dataSource={dataSource} columns={columns} />;
 };
-export default memo(UseHooks02);
+export default memo(UseHooks);
