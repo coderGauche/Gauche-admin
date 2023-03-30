@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 00:39:49
+ * @LastEditTime: 2023-03-30 16:32:32
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { useRoutes, Navigate } from "react-router-dom";
@@ -46,6 +46,14 @@ export const rootRouter: RouteObject[] = [
 				element: lazyLoad(React.lazy(() => import("@/views/dashboard/dataVisualize")))
 			}
 		]
+	},
+	{
+		path: "/403",
+		element: lazyLoad(React.lazy(() => import("@/components/ErrorMessage/403")))
+	},
+	{
+		path: "/500",
+		element: lazyLoad(React.lazy(() => import("@/components/ErrorMessage/500")))
 	},
 	{
 		path: "*",
