@@ -34,6 +34,7 @@ specifiers:
   react-dom: ^18.2.0
   react-i18next: ^12.2.0
   react-redux: ^8.0.5
+  react-router: ^6.9.0
   react-router-dom: ^6.9.0
   react-transition-group: ^4.4.5
   redux: ^4.2.1
@@ -71,6 +72,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-i18next: 12.2.0_2rh65uwnd6kial3dj4kteywnti
   react-redux: 8.0.5_ctrls2ti7t7iutxbwkm5ipogyy
+  react-router: 6.9.0_react@18.2.0
   react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
   react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.1
