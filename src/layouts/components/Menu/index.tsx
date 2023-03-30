@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 15:37:34
+ * @LastEditTime: 2023-03-30 17:14:05
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import { useEffect, useState } from "react";
@@ -46,7 +46,6 @@ const LayoutMenu = () => {
 		{
 			label: "首页",
 			key: "/home",
-			danger: false,
 			icon: <HomeOutlined />
 		},
 		{
