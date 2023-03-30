@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 16:32:32
+ * @LastEditTime: 2023-03-30 17:43:36
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { useRoutes, Navigate } from "react-router-dom";
@@ -27,7 +27,7 @@ export const rootRouter: RouteObject[] = [
 		children: [
 			{
 				path: "/home",
-				element: lazyLoad(React.lazy(() => import("@/views/login/index")))
+				element: lazyLoad(React.lazy(() => import("@/views/home/index")))
 			},
 			{
 				path: "/dataScreen",
