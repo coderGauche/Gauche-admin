@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:37:42
+ * @LastEditTime: 2023-03-30 23:58:06
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs } from "antd";
@@ -36,6 +36,10 @@ const LayoutTabs = () => {
 		{
 			label: "数据可视化",
 			key: "/dashboard/dataVisualize"
+		},
+		{
+			label: "内嵌页面",
+			key: "/dashboard/embedded"
 		}
 	]);
 

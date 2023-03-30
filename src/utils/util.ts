@@ -2,9 +2,11 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 03:00:25
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 15:40:40
+ * @LastEditTime: 2023-03-31 00:45:42
  * @FilePath: /vite-project/src/utils/util.ts
  */
+
+import { RouteObject } from "react-router-dom";
 
 /**
  * @description 获取需要展开的 subMenu  获取父级Menu  如果只有一级的话就是空的
@@ -13,7 +15,7 @@
  */
 export const getOpenKeys = (path: string) => {
 	let newStr = "";
-	let newArr = [];
+	let newArr: any[] = [];
 	let arr = path.split("/").map(i => "/" + i);
 	// * arr值为['/', '/proTable', '/useComponent'] 两层的时候他就是1和2之间遍历了只有1
 	for (let i = 1; i < arr.length - 1; i++) {
@@ -22,6 +24,22 @@ export const getOpenKeys = (path: string) => {
 	}
 	//最终获取的是['/proTable']
 	return newArr;
+};
+
+/**
+ * @description 递归查询对应的路由
+ * @param {String} path 当前访问地址
+ * @param {Array} routes 路由列表
+ * @returns array
+ */
+export const searchRouteDetail = (path: string, routes: RouteObject[]): RouteObject | null => {
+	let result: any;
+	for (let item of routes || []) {
+		if (item.path === path) return (result = item);
+		const res = searchRouteDetail(path, item.children!);
+		if (res) result = res;
+	}
+	return result;
 };
 
 /**
@@ -44,18 +62,18 @@ export const getBrowserLang = () => {
  * @param val 需要判断类型的数据
  * @returns {string} 数据类型
  */
-export function isType(val: any) {
+export const isType = (val: any) => {
 	if (val === null) return "null";
 	if (typeof val !== "object") return typeof val;
 	else return Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase();
-}
+};
 
 /**
  * @description 对象数组深克隆
  * @param obj 源对象
  * @returns {obj} 克隆后的对象
  */
-export function deepCopy<T>(obj: any): T {
+export const deepCopy = <T>(obj: any): T => {
 	let newObj: any;
 	try {
 		newObj = obj.push ? [] : {};
@@ -70,4 +88,4 @@ export function deepCopy<T>(obj: any): T {
 		}
 	}
 	return newObj;
-}
+};

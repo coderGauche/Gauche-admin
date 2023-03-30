@@ -1,7 +1,14 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-30 14:49:25
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-03-30 23:56:45
+ * @FilePath: /vite-project/src/api/config/checkStatus.ts
+ */
 import { message } from "antd";
 
 /**
- * @description: 校验状态码
+ * @description: 校验网络请求状态码
  * @param {number} status
  */
 export const checkStatus = (status: number): void => {

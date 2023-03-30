@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 22:11:51
+ * @LastEditTime: 2023-03-30 23:56:58
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -23,7 +23,7 @@ import { ResultData } from "./interface";
 const axiosCanceler = new AxiosCanceler();
 
 const config = {
-	//默认地址
+	//默认地址请求地址，可在 .env 开头文件中修改
 	baseURL: import.meta.env.VITE_API_URL as string,
 	//设置超时时间（10s）
 	timeout: 10000,
