@@ -9,9 +9,7 @@ import { HashRouter } from "react-router-dom";
 import { setLanguage } from "@/redux/modules/global/action";
 import { connect } from "react-redux";
 import Router from "@/routers/index";
-export const App = (props: any) => {
-	console.log(props);
-
+export const App = () => {
 	return (
 		<HashRouter>
 			<Router />

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-29 22:49:22
+ * @LastEditTime: 2023-03-30 16:13:19
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet, useLocation } from "react-router-dom";
@@ -23,7 +23,7 @@ const LayoutIndex = (props: { name: string }) => {
 
 	return (
 		// 这里不用 Layout 组件原因是切换页面时样式会先错乱然后在正常显示，造成页面闪屏效果
-		<Layout>
+		<section className="container-box">
 			<Sider trigger={null} collapsible collapsed={false}>
 				<LayoutMenu></LayoutMenu>
 			</Sider>
@@ -31,7 +31,7 @@ const LayoutIndex = (props: { name: string }) => {
 				<LayoutHeader></LayoutHeader>
 				<LayoutTabs></LayoutTabs>
 				<Content>
-					<TransitionGroup className="container">
+					<TransitionGroup className="content">
 						{/* exit：表示退出当前页面的时候是否有动画 */}
 						<CSSTransition key={pathname} timeout={200} classNames="fade" exit={false}>
 							<Outlet></Outlet>
@@ -40,7 +40,7 @@ const LayoutIndex = (props: { name: string }) => {
 				</Content>
 				<LayoutFooter></LayoutFooter>
 			</Layout>
-		</Layout>
+		</section>
 	);
 };
 

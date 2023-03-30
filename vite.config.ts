@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-25 02:45:53
+ * @LastEditTime: 2023-03-30 15:55:54
  * @FilePath: /vite-project/vite.config.ts
  */
 import { ConfigEnv, UserConfig, defineConfig, loadEnv } from "vite";
@@ -62,7 +62,7 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
 			port: viteEnv.VITE_PORT,
 			proxy: {
 				"/api": {
-					target: "https://mock.mengxuegu.com/mock/62abda3212c1416424630a45",
+					target: "http://codercba.com:9002",
 					secure: false,
 					rewrite: path => path.replace(/^\/api/, "")
 				}

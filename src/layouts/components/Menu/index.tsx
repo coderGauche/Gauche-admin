@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 00:41:59
+ * @LastEditTime: 2023-03-30 15:37:34
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import { useEffect, useState } from "react";
@@ -23,11 +23,9 @@ import Logo from "./components/Logo";
 import type { MenuProps } from "antd";
 
 import "./index.less";
+import { getOpenKeys } from "@/utils/util";
 
 const LayoutMenu = () => {
-	const { pathname } = useLocation();
-	const [menuActive, setMenuActive] = useState(pathname);
-	const [subMenuActive, setSubMenuActive] = useState("");
 	/**
 	 * React Router v6的hooks 跳转
 	 * 在v6之前的版本中可以直接使用history.push()和history.replace()来传递参数。
@@ -35,18 +33,15 @@ const LayoutMenu = () => {
        在v6版本中，HashRouter在页面刷新后不会导致路由state参数的丢失。
 	 */
 	const navigate = useNavigate();
-	// 找出点击的路由
-	const getSubMenuActive = () => {
-		menuList.forEach(item => {
-			if (item.children) {
-				item.children.forEach(child => {
-					if (child.key === pathname) {
-						setSubMenuActive(item.key);
-					}
-				});
-			}
-		});
-	};
+	const { pathname } = useLocation();
+	const [selectedKeys, setSelectedKeys] = useState(pathname);
+	const [openKeys, setOpenKeys] = useState<string[]>([]);
+
+	useEffect(() => {
+		setSelectedKeys(pathname);
+		setOpenKeys(getOpenKeys(pathname));
+	}, [pathname]);
+
 	const menuList = [
 		{
 			label: "首页",
@@ -170,12 +165,6 @@ const LayoutMenu = () => {
 			]
 		}
 	];
-
-	useEffect(() => {
-		getSubMenuActive();
-		setMenuActive(pathname);
-	}, [pathname]);
-
 	// type MenuItem = Required<MenuProps>["items"][number];
 	// const getItem = (label: React.ReactNode, key?: React.Key | null, icon?: React.ReactNode, children?: MenuItem[]): MenuItem => {
 	// 	return {
@@ -187,15 +176,21 @@ const LayoutMenu = () => {
 	// };
 
 	//点击当前菜单
-	const clickMenu: MenuProps["onClick"] = e => {
+	const clickMenu: MenuProps["onClick"] = ({ key }: { key: string }) => {
 		//实现跳转操作
-		navigate(e.key);
+		navigate(key);
 	};
 
-	// 展开subMenu
-	const openSubMenu = (openKeys: any) => {
-		if (openKeys.length == 0) return setSubMenuActive("");
-		setSubMenuActive(openKeys[1]);
+	// 设置当前展开的 subMenu
+	const onOpenChange = (openKeys: string[]) => {
+		//为了如果只有一层或者两层的话 直接返回
+		if (openKeys.length === 0 || openKeys.length === 1) return setOpenKeys(openKeys);
+		//拿最后一个是为了拿到点击的那个路径
+		const latestOpenKey = openKeys[openKeys.length - 1];
+		// 最新展开的 SubMenu //判断第一个和第二个是否相同
+		if (latestOpenKey.includes(openKeys[0])) return setOpenKeys(openKeys);
+		//不相等那最新的
+		setOpenKeys([latestOpenKey]);
 	};
 
 	return (
@@ -205,11 +200,11 @@ const LayoutMenu = () => {
 				theme="dark"
 				mode="inline"
 				triggerSubMenuAction="click"
-				openKeys={[subMenuActive]}
-				selectedKeys={[menuActive]}
+				openKeys={openKeys}
+				selectedKeys={[selectedKeys]}
 				items={menuList}
 				onClick={clickMenu}
-				onOpenChange={openSubMenu}
+				onOpenChange={onOpenChange}
 			></Menu>
 		</div>
 	);

@@ -2,11 +2,11 @@
  * @Author: Gauche楽
  * @Date: 2023-03-29 16:09:11
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-29 16:22:10
+ * @LastEditTime: 2023-03-30 16:05:43
  * @FilePath: /vite-project/src/config/serviceLoading.tsx
  */
 import Loading from "@/components/Loading";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 // 创建请求计数   needLoadingRequestCount只有0/1
 let needLoadingRequestCount = 0;
@@ -16,13 +16,13 @@ export const showFullScreenLoading = () => {
 	// 判断如果needLoadingRequestCount为0的话 挂载到全局上
 	if (needLoadingRequestCount === 0) {
 		//创建div节点
-		const dom = document.createElement("div");
+		let dom = document.createElement("div");
 		//给节点个id属性
 		dom.setAttribute("id", "loading");
 		//插入全局body中
 		document.body.appendChild(dom);
 		//挂载在reactdom的render上
-		ReactDOM.render(<Loading />, dom);
+		ReactDOM.createRoot(dom).render(<Loading />);
 	}
 	needLoadingRequestCount++;
 };
