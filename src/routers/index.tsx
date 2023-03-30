@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 22:43:55
+ * @LastEditTime: 2023-03-30 23:34:04
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { useRoutes, Navigate } from "react-router-dom";
@@ -25,13 +25,14 @@ export const rootRouter: RouteObject[] = [
 	},
 	{
 		element: <LayoutIndex />,
+		// element: lazyLoad(React.lazy(() => import("@/layouts/index"))),
 		children: [
 			{
-				path: "/home",
+				path: "/home/index",
 				element: lazyLoad(React.lazy(() => import("@/views/home/index")))
 			},
 			{
-				path: "/dataScreen",
+				path: "/dataScreen/index",
 				element: lazyLoad(React.lazy(() => import("@/views/dataScreen/index")))
 			},
 			{
@@ -42,11 +43,16 @@ export const rootRouter: RouteObject[] = [
 				path: "/proTable/useComponent",
 				element: lazyLoad(React.lazy(() => import("@/views/proTable/useComponent/index")))
 			},
+
 			{
 				path: "/dashboard/dataVisualize",
-				element: lazyLoad(React.lazy(() => import("@/views/dashboard/dataVisualize")))
+				element: lazyLoad(React.lazy(() => import("@/views/dashboard/dataVisualize/index")))
 			}
 		]
+	},
+	{
+		path: "/404",
+		element: lazyLoad(React.lazy(() => import("@/components/ErrorMessage/404")))
 	},
 	{
 		path: "/403",

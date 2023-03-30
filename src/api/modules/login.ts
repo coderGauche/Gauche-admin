@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 14:53:29
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 22:03:37
+ * @LastEditTime: 2023-03-30 23:32:18
  * @FilePath: /vite-project/src/api/modules/login.ts
  */
 import { Login } from "@/api/interface/index";
@@ -27,5 +27,5 @@ export const getAuthorButtons = () => {
 
 // * 获取菜单列表
 export const getMenuList = () => {
-	return http.get<Menu.MenuOptions[]>(`/banner`);
+	return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
 };

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 00:45:12
+ * @LastEditTime: 2023-03-30 23:37:42
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs } from "antd";
@@ -10,6 +10,7 @@ import { Tabs } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./index.less";
+import { HOME_URL } from "@/config/config";
 
 const LayoutTabs = () => {
 	const { pathname } = useLocation();
@@ -18,11 +19,11 @@ const LayoutTabs = () => {
 	const [tabsList] = useState([
 		{
 			label: "首页",
-			key: "/home"
+			key: HOME_URL
 		},
 		{
 			label: "数据大屏",
-			key: "/dataScreen"
+			key: "/dataScreen/index"
 		},
 		{
 			label: "使用 Hooks",

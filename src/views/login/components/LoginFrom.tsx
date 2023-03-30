@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 21:56:22
+ * @LastEditTime: 2023-03-30 23:38:38
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
@@ -13,6 +13,7 @@ import { Login } from "@/api/interface";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { loginApi } from "@/api/modules/login";
+import { HOME_URL } from "@/config/config";
 
 interface IProps {
 	children?: ReactNode;
@@ -27,7 +28,7 @@ const LoginForm: React.FC<IProps> = () => {
 			loginForm.password = md5(loginForm.password);
 			await loginApi(loginForm);
 			message.success("登录成功！");
-			navigate("/home");
+			navigate(HOME_URL);
 		} finally {
 			setLoading(false);
 		}
