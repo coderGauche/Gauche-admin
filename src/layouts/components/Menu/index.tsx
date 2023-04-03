@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:31:56
+ * @LastEditTime: 2023-04-03 15:12:06
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -16,8 +16,10 @@ import type { MenuProps } from "antd";
 import "./index.less";
 import { getOpenKeys } from "@/utils/util";
 import { getMenuList } from "@/api/modules/login";
+import { connect } from "react-redux";
+import { updateCollapse } from "@/redux/modules/menu/action";
 
-const LayoutMenu = () => {
+const LayoutMenu = (props: any) => {
 	/**
 	 * React Router v6的hooks 跳转
 	 * 在v6之前的版本中可以直接使用history.push()和history.replace()来传递参数。
@@ -28,12 +30,12 @@ const LayoutMenu = () => {
 	// 刷新页面菜单保持高亮
 	const { pathname } = useLocation();
 	const [selectedKeys, setSelectedKeys] = useState<string[]>([pathname]);
-	const [openKeys, setOpenKeys] = useState<string[]>([]);
+	const [openKeys, setOpenKeys] = useState<string[]>([]); //当前展开的 SubMenu 菜单项 key 数组
 
 	useEffect(() => {
 		setSelectedKeys([pathname]);
-		setOpenKeys(getOpenKeys(pathname));
-	}, [pathname]);
+		props.isCollapse ? null : setOpenKeys(getOpenKeys(pathname));
+	}, [pathname, props.isCollapse]);
 
 	// 设置当前展开的 subMenu
 	const onOpenChange = (openKeys: string[]) => {
@@ -71,8 +73,8 @@ const LayoutMenu = () => {
 	const getMenuData = async () => {
 		setLoading(true);
 		try {
-			const result = await getMenuList();
-			result.data && setMenuList(deepLoopFloat(result.data));
+			const { data } = await getMenuList();
+			data && setMenuList(deepLoopFloat(data));
 		} finally {
 			setLoading(false);
 		}
@@ -97,7 +99,7 @@ const LayoutMenu = () => {
 	// 处理后台返回菜单 key 值为 antd 菜单需要的 key 值
 	const deepLoopFloat = (menuList: Menu.MenuOptions[], newArr: MenuItem[] = []) => {
 		menuList.forEach((item: Menu.MenuOptions) => {
-			// 下面判断解释 *** !item?.children?.length   ==>   (!item.children || item.children.length === 0)
+			// 下面判断代码解释 *** !item?.children?.length   ==>   (!item.children || item.children.length === 0)
 			if (!item.children?.length) return newArr.push(getItem(item.title, item.path, addIcon(item.icon!)));
 			newArr.push(getItem(item.title, item.path, addIcon(item.icon!), deepLoopFloat(item.children)));
 		});
@@ -123,4 +125,7 @@ const LayoutMenu = () => {
 	);
 };
 
-export default LayoutMenu;
+const mapDispatchToProps = { updateCollapse };
+const mapStateToProps = (state: any) => state.menu;
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutMenu);

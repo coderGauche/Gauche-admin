@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:56:58
+ * @LastEditTime: 2023-03-31 00:57:52
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -63,7 +63,6 @@ class RequestHttp {
 		this.instance.interceptors.response.use(
 			(response: AxiosResponse) => {
 				const { data, config } = response;
-				console.log(response, "response");
 				// * 在请求结束后，移除本次请求(关闭loading)
 				axiosCanceler.removePending(config);
 				tryHideFullScreenLoading();

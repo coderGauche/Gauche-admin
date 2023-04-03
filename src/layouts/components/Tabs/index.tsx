@@ -2,10 +2,10 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:58:06
+ * @LastEditTime: 2023-04-03 15:06:12
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
-import { Tabs } from "antd";
+import { Tabs, message } from "antd";
 // import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -53,6 +53,7 @@ const LayoutTabs = () => {
 
 	const delTabs = (path: string) => {
 		console.log(path);
+		message.success("删除Tabs标签 😆😆😆");
 	};
 
 	return (

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:41:55
+ * @LastEditTime: 2023-04-03 14:52:26
  * @FilePath: /vite-project/src/layouts/components/Header/components/AvatarIcon.tsx
  */
 import { useRef } from "react";
@@ -45,7 +45,7 @@ const AvatarIcon = () => {
 					首页
 				</span>
 			),
-			key: "0"
+			key: "1"
 		},
 		{
 			label: (
@@ -53,7 +53,7 @@ const AvatarIcon = () => {
 					个人信息
 				</span>
 			),
-			key: "1"
+			key: "2"
 		},
 		{
 			label: (
