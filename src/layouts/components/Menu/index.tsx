@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 15:12:06
+ * @LastEditTime: 2023-04-03 17:05:10
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -74,7 +74,8 @@ const LayoutMenu = (props: any) => {
 		setLoading(true);
 		try {
 			const { data } = await getMenuList();
-			data && setMenuList(deepLoopFloat(data));
+			if (!data) return;
+			setMenuList(deepLoopFloat(data));
 		} finally {
 			setLoading(false);
 		}

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-31 17:55:36
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 11:50:33
+ * @LastEditTime: 2023-04-03 17:06:27
  * @FilePath: /vite-project/src/redux/modules/menu/action.ts
  */
 import { getMenuList } from "@/api/modules/login";
@@ -16,6 +16,12 @@ interface MenuProps {
 
 export const updateCollapse = () => ({
 	type: types.UPDATE_COLLAPSE
+});
+
+// * setMenuList
+export const setMenuList = (menuList: Menu.MenuOptions[]) => ({
+	type: types.SET_MENU_LIST,
+	menuList
 });
 
 export const getMenuListActionThunk = () => {

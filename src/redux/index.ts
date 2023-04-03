@@ -5,16 +5,18 @@ import { persistReducer, persistStore } from "redux-persist";
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:34
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 11:57:06
+ * @LastEditTime: 2023-04-03 17:57:40
  * @FilePath: /vite-project/src/redux/index.ts
  */
 
 import storage from "redux-persist/lib/storage";
 import menu from "./modules/menu/reducer";
+import tabs from "./modules/tabs/reducer";
 
 // 创建reducer(拆分reducer)
 const reducer = combineReducers({
-	menu
+	menu,
+	tabs
 });
 
 // * 持久化配置
