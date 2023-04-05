@@ -1,3 +1,10 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-26 02:18:08
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-04 00:19:43
+ * @FilePath: /vite-project/src/redux/interface/index.ts
+ */
 import type { SizeType } from "antd/lib/config-provider/SizeContext";
 
 /* themeConfigProp */

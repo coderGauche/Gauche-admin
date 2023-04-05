@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 17:05:10
+ * @LastEditTime: 2023-04-04 00:09:57
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -14,10 +14,11 @@ import Logo from "./components/Logo";
 import type { MenuProps } from "antd";
 
 import "./index.less";
-import { getOpenKeys } from "@/utils/util";
+import { findAllBreadcrumb, getOpenKeys } from "@/utils/util";
 import { getMenuList } from "@/api/modules/login";
 import { connect } from "react-redux";
-import { updateCollapse } from "@/redux/modules/menu/action";
+import { setMenuList } from "@/redux/modules/menu/action";
+import { setBreadcrumbList } from "@/redux/modules/breadcrumb/action";
 
 const LayoutMenu = (props: any) => {
 	/**
@@ -76,6 +77,9 @@ const LayoutMenu = (props: any) => {
 			const { data } = await getMenuList();
 			if (!data) return;
 			setMenuList(deepLoopFloat(data));
+			// 存储处理过后的所有面包屑导航栏到 redux 中
+			props.setBreadcrumbList(findAllBreadcrumb(data));
+			// props.setMenuList(data);
 		} finally {
 			setLoading(false);
 		}
@@ -126,7 +130,7 @@ const LayoutMenu = (props: any) => {
 	);
 };
 
-const mapDispatchToProps = { updateCollapse };
+const mapDispatchToProps = { setMenuList, setBreadcrumbList };
 const mapStateToProps = (state: any) => state.menu;
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutMenu);

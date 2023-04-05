@@ -1,22 +1,25 @@
-import reduxThunk from "redux-thunk";
-import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose, Store } from "redux";
-import { persistReducer, persistStore } from "redux-persist";
 /*
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:34
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 17:57:40
+ * @LastEditTime: 2023-04-03 23:23:52
  * @FilePath: /vite-project/src/redux/index.ts
  */
 
 import storage from "redux-persist/lib/storage";
 import menu from "./modules/menu/reducer";
 import tabs from "./modules/tabs/reducer";
+import { breadcrumb } from "./modules/breadcrumb/reducer";
+import reduxThunk from "redux-thunk";
+import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose, Store } from "redux";
+import { persistReducer, persistStore } from "redux-persist";
+import reduxPromise from "redux-promise";
 
 // 创建reducer(拆分reducer)
 const reducer = combineReducers({
 	menu,
-	tabs
+	tabs,
+	breadcrumb
 });
 
 // * 持久化配置
@@ -32,7 +35,7 @@ const persistReducerConfig = persistReducer(persistConfig, reducer);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // 使用 redux 中间件
-const middleWares = applyMiddleware(reduxThunk);
+const middleWares = applyMiddleware(reduxThunk, reduxPromise);
 
 // 创建store
 const store: Store = createStore(persistReducerConfig, composeEnhancers(middleWares));

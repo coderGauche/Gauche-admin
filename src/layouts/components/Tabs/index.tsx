@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 17:59:05
+ * @LastEditTime: 2023-04-05 23:24:12
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./index.less";
 import { connect } from "react-redux";
-import { addTabs } from "@/redux/modules/tabs/action";
+import { setTabsList } from "@/redux/modules/tabs/action";
 import { searchRoute } from "@/utils/util";
 import { routerArray } from "@/routers";
 
@@ -21,19 +21,40 @@ const LayoutTabs = (props: any) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		const route = searchRoute(pathname, routerArray);
-		props.addTabs({ title: route.meta!.title, path: route.path });
-		console.log(props.tabsList);
-		setActiveValue(pathname);
+		addTabs();
 	}, [pathname]);
+
+	const addTabs = () => {
+		const route = searchRoute(pathname, routerArray);
+		console.log(props, "tabsList");
+		console.log(route, "route");
+
+		let tabsList: any = props.tabsList ? JSON.parse(JSON.stringify(props.tabsList)) : [];
+		if (props.tabsList.every((item: any) => item.path !== route.path)) {
+			tabsList.push({ title: route.meta!.title, path: route.path });
+		}
+		props.setTabsList(tabsList);
+		console.log(props.tabsList);
+
+		setActiveValue(pathname);
+	};
+
+	const delTabs = (tabPath: string) => {
+		if (tabPath === pathname) {
+			props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
+				if (item.path !== tabPath) return;
+				const nextTab = props.tabsList[index + 1] || props.tabList[index - 1];
+				console.log(nextTab, "nextTab");
+				if (!nextTab) return false;
+				navigate(nextTab.path);
+			});
+		}
+		message.success("删除Tabs标签 😆😆😆");
+		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
+	};
 
 	const tabsClick = (path: string) => {
 		navigate(path);
-	};
-
-	const delTabs = (path: string) => {
-		console.log(path);
-		message.success("删除Tabs标签 😆😆😆");
 	};
 
 	return (
@@ -43,12 +64,16 @@ const LayoutTabs = (props: any) => {
 				onChange={tabsClick}
 				hideAdd
 				type="editable-card"
-				items={props.tabsList.map((item: Menu.MenuOptions) => {
-					return {
-						label: item.title,
-						key: item.path
-					};
-				})}
+				items={
+					props.tabsList
+						? props.tabsList.map((item: Menu.MenuOptions) => {
+								return {
+									label: item.title,
+									key: item.path
+								};
+						  })
+						: []
+				}
 				onEdit={path => {
 					delTabs(path as string);
 				}}
@@ -58,5 +83,5 @@ const LayoutTabs = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => state.tabs;
-const mapDispatchToProps = { addTabs };
+const mapDispatchToProps = { setTabsList };
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutTabs);
