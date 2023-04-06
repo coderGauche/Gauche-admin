@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:30:02
+ * @LastEditTime: 2023-04-06 18:42:22
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -14,6 +14,8 @@ import { connect } from "react-redux";
 import { setTabsList } from "@/redux/modules/tabs/action";
 import { searchRoute } from "@/utils/util";
 import { routerArray } from "@/routers";
+import { RootState } from "@/redux";
+import { TabsState } from "@/redux/interface";
 
 const LayoutTabs = (props: any) => {
 	const { pathname } = useLocation();
@@ -76,6 +78,6 @@ const LayoutTabs = (props: any) => {
 	);
 };
 
-const mapStateToProps = (state: any) => state.tabs;
+const mapStateToProps = (state: RootState): TabsState => state.tabs;
 const mapDispatchToProps = { setTabsList };
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutTabs);

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:18:57
+ * @LastEditTime: 2023-04-06 22:54:15
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet, useLocation } from "react-router-dom";
@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 import { getAuthorButtons } from "@/api/modules/login";
 import { setAuthButtons } from "@/redux/modules/auth/action";
 import { useEffect } from "react";
+import { updateCollapse } from "@/redux/modules/menu/action";
 
 const LayoutIndex = (props: any) => {
 	const { Sider, Content } = Layout;
@@ -28,7 +29,19 @@ const LayoutIndex = (props: any) => {
 		props.setAuthButtons(data);
 	};
 
+	// 监听窗口大小变化
+	const listeningWindow = () => {
+		window.onresize = () => {
+			return (() => {
+				let screenWidth = document.body.clientWidth;
+				if (props.isCollapse === false && screenWidth < 1200) props.updateCollapse(true);
+				if (props.isCollapse === false && screenWidth > 1200) props.updateCollapse(false);
+			})();
+		};
+	};
+
 	useEffect(() => {
+		listeningWindow();
 		getAuthButtonsData();
 	}, []);
 
@@ -42,6 +55,7 @@ const LayoutIndex = (props: any) => {
 				<LayoutHeader></LayoutHeader>
 				<LayoutTabs></LayoutTabs>
 				<Content>
+					{/* TransitionGroup 会导致 useEffect 加载两次，后期在解决 */}
 					<TransitionGroup className="content">
 						{/* exit：表示退出当前页面的时候是否有动画 */}
 						<CSSTransition key={pathname} timeout={200} classNames="fade" exit={false}>
@@ -58,5 +72,5 @@ const LayoutIndex = (props: any) => {
 // * react-redux写法(高阶组件)
 // * connect具有两个参数，第一个参数是mapStateToProps，第二个参数是mapDispatchToProps
 const mapStateToProps = (state: any) => state.menu;
-const mapDispatchToProps = { setAuthButtons };
+const mapDispatchToProps = { setAuthButtons, updateCollapse };
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutIndex);

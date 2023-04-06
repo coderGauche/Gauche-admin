@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:34
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 00:01:32
+ * @LastEditTime: 2023-04-06 17:24:37
  * @FilePath: /vite-project/src/redux/index.ts
  */
 
@@ -25,6 +25,8 @@ const reducer = combineReducers({
 	global,
 	auth
 });
+
+export type RootState = ReturnType<typeof reducer>;
 
 // * 持久化配置
 const persistConfig = {

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:43:23
+ * @LastEditTime: 2023-04-06 22:53:01
  * @FilePath: /vite-project/src/layouts/components/Header/index.tsx
  */
 import { Layout } from "antd";
@@ -34,4 +34,5 @@ const LayoutHeader = () => {
 		</Header>
 	);
 };
+
 export default LayoutHeader;
