@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:02:26
+ * @LastEditTime: 2023-04-06 23:38:41
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ import Logo from "./components/Logo";
 import type { MenuProps } from "antd";
 
 import "./index.less";
-import { findAllBreadcrumb, getOpenKeys, handleRouter } from "@/utils/util";
+import { findAllBreadcrumb, getOpenKeys, handleRouter, searchRoute } from "@/utils/util";
 import { getMenuList } from "@/api/modules/login";
 import { connect } from "react-redux";
 import { setMenuList } from "@/redux/modules/menu/action";
@@ -94,6 +94,8 @@ const LayoutMenu = (props: any) => {
 
 	//点击当前菜单
 	const clickMenu: MenuProps["onClick"] = ({ key }: { key: string }) => {
+		const route = searchRoute(key, props.menuList);
+		if (route.isLink) window.open(route.isLink, "_blank");
 		//实现跳转操作
 		navigate(key);
 	};
