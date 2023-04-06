@@ -2,8 +2,8 @@
  * @Author: Gauche楽
  * @Date: 2023-04-05 23:35:56
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:09:47
- * @FilePath: /vite-project/src/routers/authRouter.tsx
+ * @LastEditTime: 2023-04-06 23:19:06
+ * @FilePath: /vite-project/src/routers/utils/authRouter.tsx
  */
 
 import { searchRoute } from "@/utils/util";
@@ -12,6 +12,9 @@ import { store } from "@/redux";
 import { Navigate } from "react-router-dom";
 import { HOME_URL } from "@/config/config";
 import { rootRouter } from "@/routers/index";
+import { AxiosCanceler } from "@/api/helper/axiosCancel";
+
+const axiosCanceler = new AxiosCanceler();
 
 /**
  * @description 路由权限组件
@@ -37,6 +40,8 @@ import { rootRouter } from "@/routers/index";
 const AuthRouter = (props: any) => {
 	const { pathname } = location; //当前路由的路径（key）
 	const route = searchRoute(pathname, rootRouter); //当前路由全部信息
+	// * 在跳转路由之前，清除所有的请求
+	axiosCanceler.removeAllPending();
 	// 	//判断路由是否需要访问权限
 	if (!route.meta?.requiresAuth) return props.children;
 	//判断是否有token

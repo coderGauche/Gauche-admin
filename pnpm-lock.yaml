@@ -29,6 +29,7 @@ specifiers:
   lint-staged: ^13.2.0
   lodash: ^4.17.21
   normalize.css: ^8.0.1
+  nprogress: ^0.2.0
   postcss: ^8.4.21
   prettier: ^2.8.7
   qs: ^6.11.1
@@ -69,6 +70,7 @@ dependencies:
   js-md5: 0.7.3
   lodash: 4.17.21
   normalize.css: 8.0.1
+  nprogress: 0.2.0
   postcss: 8.4.21
   qs: 6.11.1
   react: 18.2.0
@@ -3861,6 +3863,10 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /nth-check/2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}

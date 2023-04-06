@@ -2,15 +2,13 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:07:06
+ * @LastEditTime: 2023-04-06 23:17:29
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { Navigate, useRoutes } from "react-router-dom";
 import React from "react";
 // import type { RouteObject } from "react-router-dom";
 import { RouteObject } from "@/routers/interface";
-
-// * login 页没必要使用懒加载
 import Login from "@/views/login/index";
 import NotFound from "@/components/ErrorMessage/404";
 
