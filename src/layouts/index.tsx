@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 16:44:11
+ * @LastEditTime: 2023-04-06 10:18:57
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet, useLocation } from "react-router-dom";
@@ -14,11 +14,23 @@ import LayoutTabs from "./components/Tabs";
 import LayoutFooter from "./components/Footer";
 import "./index.less";
 import { connect } from "react-redux";
-
-const { Sider, Content } = Layout;
+import { getAuthorButtons } from "@/api/modules/login";
+import { setAuthButtons } from "@/redux/modules/auth/action";
+import { useEffect } from "react";
 
 const LayoutIndex = (props: any) => {
+	const { Sider, Content } = Layout;
 	const { pathname } = useLocation();
+
+	//获取按钮权限
+	const getAuthButtonsData = async () => {
+		const { data } = await getAuthorButtons();
+		props.setAuthButtons(data);
+	};
+
+	useEffect(() => {
+		getAuthButtonsData();
+	}, []);
 
 	return (
 		// 这里不用 Layout 组件原因是切换页面时样式会先错乱然后在正常显示，造成页面闪屏效果
@@ -46,4 +58,5 @@ const LayoutIndex = (props: any) => {
 // * react-redux写法(高阶组件)
 // * connect具有两个参数，第一个参数是mapStateToProps，第二个参数是mapDispatchToProps
 const mapStateToProps = (state: any) => state.menu;
-export default connect(mapStateToProps)(LayoutIndex);
+const mapDispatchToProps = { setAuthButtons };
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutIndex);

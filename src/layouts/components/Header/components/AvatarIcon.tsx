@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 14:52:26
+ * @LastEditTime: 2023-04-06 10:00:13
  * @FilePath: /vite-project/src/layouts/components/Header/components/AvatarIcon.tsx
  */
 import { useRef } from "react";
@@ -14,11 +14,13 @@ import avatar from "@/assets/images/avatar.png";
 import InfoModal from "./InfoModal";
 import PasswordModal from "./PasswordModal";
 import { HOME_URL } from "@/config/config";
+import { setToken } from "@/redux/modules/global/action";
+import { connect } from "react-redux";
 
 interface ModalProps {
 	showModal: (params: { name: number }) => void;
 }
-const AvatarIcon = () => {
+const AvatarIcon = (props: any) => {
 	const navigate = useNavigate();
 	const infoRef = useRef<ModalProps>(null);
 	const passRef = useRef<ModalProps>(null);
@@ -33,6 +35,7 @@ const AvatarIcon = () => {
 			okText: "确认",
 			cancelText: "取消",
 			onOk: () => {
+				props.setToken("");
 				message.success("退出登录成功！");
 				navigate("/login");
 			}
@@ -86,4 +89,6 @@ const AvatarIcon = () => {
 	);
 };
 
-export default AvatarIcon;
+const mapDispatchToProps = { setToken };
+
+export default connect(null, mapDispatchToProps)(AvatarIcon);

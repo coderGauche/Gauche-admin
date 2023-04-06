@@ -2,14 +2,16 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:34
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 23:23:52
+ * @LastEditTime: 2023-04-06 00:01:32
  * @FilePath: /vite-project/src/redux/index.ts
  */
 
 import storage from "redux-persist/lib/storage";
 import menu from "./modules/menu/reducer";
 import tabs from "./modules/tabs/reducer";
+import global from "./modules/global/reducer";
 import { breadcrumb } from "./modules/breadcrumb/reducer";
+import auth from "./modules/auth/reducer";
 import reduxThunk from "redux-thunk";
 import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose, Store } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
@@ -19,7 +21,9 @@ import reduxPromise from "redux-promise";
 const reducer = combineReducers({
 	menu,
 	tabs,
-	breadcrumb
+	breadcrumb,
+	global,
+	auth
 });
 
 // * 持久化配置

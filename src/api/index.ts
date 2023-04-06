@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 00:57:52
+ * @LastEditTime: 2023-04-06 10:14:48
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -12,6 +12,7 @@ import { ResultEnum } from "@/enums/httpEnum";
 import { message } from "antd";
 import { checkStatus } from "./config/checkStatus";
 import { ResultData } from "./interface";
+import { store } from "@/redux";
 
 /*
  * @Author: Gauche楽
@@ -48,7 +49,7 @@ class RequestHttp {
 				// * 如果当前请求不需要显示 loading,
 				// * 在api服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading，参见loginApi
 				config.headers!.noLoading || showFullScreenLoading();
-				const token: string = "bqddxxwqmfncffacvbpkuxvwvqrhln";
+				const token: string = store.getState().global.token;
 				return { ...config, headers: { ...config.headers, "x-access-token": token } };
 			},
 			(error: AxiosError) => {

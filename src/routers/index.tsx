@@ -2,10 +2,10 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 00:41:42
+ * @LastEditTime: 2023-04-06 09:06:26
  * @FilePath: /vite-project/src/routers/index.tsx
  */
-import { useRoutes, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import React from "react";
 // import type { RouteObject } from "react-router-dom";
 import { RouteObject } from "@/routers/interface";
@@ -46,10 +46,10 @@ export const rootRouter: RouteObject[] = [
 	}
 ];
 
-const Router = () => {
-	//@ts-ignore
-	const routers = useRoutes(rootRouter);
-	return routers;
-};
+// const Router = () => {
+// 	//@ts-ignore
+// 	const routers = useRoutes(rootRouter);
+// 	return routers;
+// };
 
-export default Router;
+export default rootRouter;

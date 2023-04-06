@@ -2,26 +2,26 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:08
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-04 00:19:43
+ * @LastEditTime: 2023-04-05 23:48:25
  * @FilePath: /vite-project/src/redux/interface/index.ts
  */
 import type { SizeType } from "antd/lib/config-provider/SizeContext";
 
 /* themeConfigProp */
 export interface ThemeConfigProp {
-	primary: string;
-	isDark: boolean;
-	weakOrGray: string;
-	breadcrumb: boolean;
-	tabs: boolean;
-	footer: boolean;
+	primary?: string;
+	isDark?: boolean;
+	weakOrGray?: string;
+	breadcrumb?: boolean;
+	tabs?: boolean;
+	footer?: boolean;
 }
 
 /* GlobalState */
 export interface GlobalState {
 	token: string;
 	userInfo: any;
-	assemblySize: SizeType;
+	assemblySize?: SizeType;
 	language: string;
 	themeConfig: ThemeConfigProp;
 }

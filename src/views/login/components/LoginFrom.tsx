@@ -2,23 +2,25 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 23:38:38
+ * @LastEditTime: 2023-04-06 09:29:21
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
 import { Button, Form, FormInstance, Input, message } from "antd";
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import type { ReactNode } from "react";
 import { Login } from "@/api/interface";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { loginApi } from "@/api/modules/login";
 import { HOME_URL } from "@/config/config";
+import { setToken } from "@/redux/modules/global/action";
+import { connect } from "react-redux";
 
 interface IProps {
 	children?: ReactNode;
 }
-const LoginForm: React.FC<IProps> = () => {
+const LoginForm: React.FC<IProps> = (props: any) => {
 	const navigate = useNavigate();
 	const formRef = React.useRef<FormInstance>(null);
 	const [loading, setLoading] = useState<boolean>(false);
@@ -26,7 +28,9 @@ const LoginForm: React.FC<IProps> = () => {
 		try {
 			setLoading(true);
 			loginForm.password = md5(loginForm.password);
-			await loginApi(loginForm);
+			const { data } = await loginApi(loginForm);
+			console.log(data?.access_token);
+			props.setToken(data?.access_token);
 			message.success("登录成功！");
 			navigate(HOME_URL);
 		} finally {
@@ -68,4 +72,8 @@ const LoginForm: React.FC<IProps> = () => {
 		</Form>
 	);
 };
-export default memo(LoginForm);
+
+const mapDispatchToProps = { setToken };
+
+// export default memo(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);
