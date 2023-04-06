@@ -2,26 +2,23 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:36:06
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 00:54:19
+ * @LastEditTime: 2023-04-06 10:29:18
  * @FilePath: /vite-project/src/views/proTable/useHooks/index.tsx
  */
 import { Table } from "antd";
-import React, { memo } from "react";
+import React, { useEffect } from "react";
 import type { ReactNode } from "react";
-import { searchRoute } from "@/utils/util";
 
 import "./index.less";
-import { useLocation } from "react-router-dom";
-import { rootRouter } from "@/routers";
+import { connect } from "react-redux";
 
 interface IProps {
 	children?: ReactNode;
 }
-const UseHooks: React.FC<IProps> = () => {
-	const location = useLocation();
-
-	const res = searchRoute(location.pathname, rootRouter);
-	console.log(res);
+const UseHooks: React.FC<IProps> = (props: any) => {
+	useEffect(() => {
+		console.log(props.authButtons, "authButtons");
+	}, []);
 	const dataSource = [
 		{
 			key: "1",
@@ -56,4 +53,7 @@ const UseHooks: React.FC<IProps> = () => {
 	];
 	return <Table dataSource={dataSource} columns={columns} />;
 };
-export default memo(UseHooks);
+
+const mapStateToProps = (state: any) => state.auth;
+
+export default connect(mapStateToProps)(UseHooks);

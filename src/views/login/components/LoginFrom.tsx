@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:23:28
+ * @LastEditTime: 2023-04-06 10:30:39
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
@@ -29,7 +29,6 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 			setLoading(true);
 			loginForm.password = md5(loginForm.password);
 			const { data } = await loginApi(loginForm);
-			console.log(data?.access_token);
 			props.setToken(data?.access_token);
 			message.success("登录成功！");
 			navigate(HOME_URL);

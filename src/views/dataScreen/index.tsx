@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:35:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 00:46:50
+ * @LastEditTime: 2023-04-06 10:30:32
  * @FilePath: /vite-project/src/views/dataScreen/index.tsx
  */
 import { Button } from "antd";
@@ -15,8 +15,7 @@ interface IProps {
 }
 const dataScreen: React.FC<IProps> = () => {
 	const requestMenuList = async () => {
-		const res = await getAuthorButtons();
-		console.log(res);
+		await getAuthorButtons();
 	};
 	return (
 		<Button type="primary" onClick={requestMenuList}>

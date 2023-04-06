@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-04 16:45:04
+ * @LastEditTime: 2023-04-06 10:29:50
  * @FilePath: /vite-project/src/layouts/components/Header/components/BreadcrumbNav.tsx
  */
 import { Breadcrumb } from "antd";
@@ -12,7 +12,6 @@ import { HOME_URL } from "@/config/config";
 import { BreadcrumbItemType } from "antd/es/breadcrumb/Breadcrumb";
 import { connect } from "react-redux";
 const BreadcrumbNav = (props: any) => {
-	console.log(props);
 	const { pathname } = useLocation();
 	const breadcrumbList = props.breadcrumbList[pathname] || [];
 	let BreadcrumbItem: BreadcrumbItemType[] = [];
@@ -24,7 +23,6 @@ const BreadcrumbNav = (props: any) => {
 			});
 		}
 	});
-	// console.log(breadcrumbList);
 
 	return (
 		<Breadcrumb

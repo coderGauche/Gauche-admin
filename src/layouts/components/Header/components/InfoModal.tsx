@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 16:49:38
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 17:05:35
+ * @LastEditTime: 2023-04-06 10:31:09
  * @FilePath: /vite-project/src/layouts/components/Header/components/InfoModal.tsx
  */
 import { Modal, message } from "antd";
@@ -17,8 +17,7 @@ const InfoModal: React.FC<IProps> = props => {
 		showModal
 	}));
 
-	const showModal = (params: { name: number }) => {
-		console.log(params);
+	const showModal = () => {
 		setModalVisible(true);
 	};
 

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:13:33
+ * @LastEditTime: 2023-04-06 10:30:02
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -26,15 +26,11 @@ const LayoutTabs = (props: any) => {
 
 	const addTabs = () => {
 		const route = searchRoute(pathname, routerArray);
-		console.log(props, "tabsList");
-		console.log(route, "route");
-
 		let tabsList: any = props.tabsList ? JSON.parse(JSON.stringify(props.tabsList)) : [];
 		if (props.tabsList.every((item: any) => item.path !== route.path)) {
 			tabsList.push({ title: route.meta!.title, path: route.path });
 		}
 		props.setTabsList(tabsList);
-		console.log(props.tabsList);
 
 		setActiveValue(pathname);
 	};
