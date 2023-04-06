@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 09:29:21
+ * @LastEditTime: 2023-04-06 10:23:28
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
@@ -74,6 +74,4 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 };
 
 const mapDispatchToProps = { setToken };
-
-// export default memo(LoginForm);
 export default connect(null, mapDispatchToProps)(LoginForm);
