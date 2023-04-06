@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:30:39
+ * @LastEditTime: 2023-04-06 23:08:58
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
@@ -16,6 +16,7 @@ import { loginApi } from "@/api/modules/login";
 import { HOME_URL } from "@/config/config";
 import { setToken } from "@/redux/modules/global/action";
 import { connect } from "react-redux";
+import { setTabsList } from "@/redux/modules/tabs/action";
 
 interface IProps {
 	children?: ReactNode;
@@ -30,6 +31,7 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 			loginForm.password = md5(loginForm.password);
 			const { data } = await loginApi(loginForm);
 			props.setToken(data?.access_token);
+			props.setTabsList([]);
 			message.success("登录成功！");
 			navigate(HOME_URL);
 		} finally {
@@ -72,5 +74,5 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 	);
 };
 
-const mapDispatchToProps = { setToken };
+const mapDispatchToProps = { setToken, setTabsList };
 export default connect(null, mapDispatchToProps)(LoginForm);
