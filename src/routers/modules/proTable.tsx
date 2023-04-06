@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-31 00:00:16
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 13:46:09
+ * @LastEditTime: 2023-04-06 23:26:09
  * @FilePath: /vite-project/src/routers/modules/proTable.tsx
  */
 import React from "react";
@@ -20,7 +20,7 @@ const proTableRouter: Array<RouteObject> = [
 		children: [
 			{
 				path: "/proTable/useHooks",
-				element: lazyLoad(React.lazy(() => import("@/views/proTable/useHooks"))),
+				element: lazyLoad(React.lazy(() => import("@/views/proTable/useHooks/index"))),
 				meta: {
 					keepAlive: true,
 					requiresAuth: true,
@@ -30,7 +30,7 @@ const proTableRouter: Array<RouteObject> = [
 			},
 			{
 				path: "/proTable/useComponent",
-				element: lazyLoad(React.lazy(() => import("@/views/proTable/useComponent"))),
+				element: lazyLoad(React.lazy(() => import("@/views/proTable/useComponent/index"))),
 				meta: {
 					keepAlive: true,
 					requiresAuth: true,
