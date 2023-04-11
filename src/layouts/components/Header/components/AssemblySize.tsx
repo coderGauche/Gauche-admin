@@ -2,33 +2,50 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:40:53
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 14:50:55
+ * @LastEditTime: 2023-04-12 00:53:03
  * @FilePath: /vite-project/src/layouts/components/Header/components/AssemblySize.tsx
  */
-import { Dropdown, Tooltip, MenuProps } from "antd";
+import { setAssemblySize } from "@/redux/modules/global/action";
+import { Dropdown, MenuProps } from "antd";
 import React from "react";
+import { connect } from "react-redux";
 
-const AssemblySize = () => {
+const AssemblySize = (props: any) => {
 	const items: MenuProps["items"] = [
 		{
-			key: "1",
-			label: <span>默认</span>
+			key: "middle",
+			disabled: props.assemblySize == "middle",
+			label: <span>默认</span>,
+			onClick: e => {
+				console.log(e);
+				props.setAssemblySize(e.key);
+			}
 		},
 		{
-			key: "2",
-			label: <span>大型</span>
+			disabled: props.assemblySize == "large",
+			key: "large",
+			label: <span>大型</span>,
+			onClick: e => {
+				console.log(e);
+				props.setAssemblySize(e.key);
+			}
 		},
 		{
-			key: "3",
-			label: <span>小型</span>
+			disabled: props.assemblySize == "small",
+			key: "small",
+			label: <span>小型</span>,
+			onClick: e => {
+				console.log(e);
+				props.setAssemblySize(e.key);
+			}
 		}
 	];
 	return (
 		<Dropdown menu={{ items }} placement="bottom" trigger={["click"]} arrow={true}>
-			<Tooltip placement="bottom" title={"组件大小"}>
-				<i className="icon-style iconfont icon-contentright"></i>
-			</Tooltip>
+			<i className="icon-style iconfont icon-contentright"></i>
 		</Dropdown>
 	);
 };
-export default AssemblySize;
+const mapStateToProps = (state: any) => state.global;
+const mapDispatchToProps = { setAssemblySize };
+export default connect(mapStateToProps, mapDispatchToProps)(AssemblySize);

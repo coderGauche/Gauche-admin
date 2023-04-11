@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:51:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 09:57:05
+ * @LastEditTime: 2023-04-12 01:01:25
  * @FilePath: /vite-project/src/redux/modules/global/reducer.ts
  */
 
@@ -29,6 +29,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) =>
 		switch (action.type) {
 			case types.SET_TOKEN:
 				draftState.token = action.token;
+				break;
+			case types.SET_ASSEMBLY_SIZE:
+				draftState.assemblySize = action.assemblySize;
 				break;
 			default:
 				return draftState;

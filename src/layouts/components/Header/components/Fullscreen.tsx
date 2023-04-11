@@ -2,16 +2,10 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:42:15
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-03 14:54:07
+ * @LastEditTime: 2023-04-12 00:53:32
  * @FilePath: /vite-project/src/layouts/components/Header/components/Fullscreen.tsx
  */
-import { Tooltip } from "antd";
-
 const Fullscreen = () => {
-	return (
-		<Tooltip placement="bottom" title={"全屏"}>
-			<i className="icon-style iconfont icon-fangda"></i>
-		</Tooltip>
-	);
+	return <i className="icon-style iconfont icon-fangda"></i>;
 };
 export default Fullscreen;

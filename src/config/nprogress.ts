@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:15:54
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:16:31
+ * @LastEditTime: 2023-04-12 00:36:18
  * @FilePath: /vite-project/src/config/nprogress.ts
  */
 import NProgress from "nprogress";

@@ -15,7 +15,7 @@ import "@/styles/reset.less";
 import "virtual:svg-icons-register";
 import "@/assets/iconfont/iconfont.less";
 
-import { App } from "@/App";
+import App from "@/App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "@/redux";

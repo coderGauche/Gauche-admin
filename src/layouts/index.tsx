@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:40:31
+ * @LastEditTime: 2023-04-12 00:55:50
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet } from "react-router-dom";
@@ -55,7 +55,7 @@ const LayoutIndex = (props: any) => {
 				<LayoutHeader></LayoutHeader>
 				<LayoutTabs></LayoutTabs>
 				<Content>
-					{/* TransitionGroup 会导致 useEffect 加载两次，后期在解决 */}
+					{/* TransitionGroup 会导致 useEffect 加载两次 && 使用路由懒加载第一次进入没有动画，所以暂时不用过渡动画了 */}
 					{/* <TransitionGroup className="content"> */}
 					{/* exit：表示退出当前页面的时候是否有动画 */}
 					{/* <CSSTransition key={pathname} timeout={200} classNames="fade" exit={false}> */}

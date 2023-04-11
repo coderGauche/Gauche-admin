@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:14:48
+ * @LastEditTime: 2023-04-12 00:33:14
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -13,6 +13,7 @@ import { message } from "antd";
 import { checkStatus } from "./config/checkStatus";
 import { ResultData } from "./interface";
 import { store } from "@/redux";
+import NProgress from "@/config/nprogress";
 
 /*
  * @Author: Gauche楽
@@ -44,6 +45,7 @@ class RequestHttp {
 		 */
 		this.instance.interceptors.request.use(
 			(config: AxiosRequestConfig): any => {
+				NProgress.start();
 				// 将当前请求添加pending中
 				axiosCanceler.addPending(config);
 				// * 如果当前请求不需要显示 loading,
@@ -64,6 +66,7 @@ class RequestHttp {
 		this.instance.interceptors.response.use(
 			(response: AxiosResponse) => {
 				const { data, config } = response;
+				NProgress.done();
 				// * 在请求结束后，移除本次请求(关闭loading)
 				axiosCanceler.removePending(config);
 				tryHideFullScreenLoading();
@@ -83,6 +86,7 @@ class RequestHttp {
 			},
 			async (error: AxiosError) => {
 				const { response } = error;
+				NProgress.done();
 				tryHideFullScreenLoading();
 				// 根据响应的错误状态码，做不同的处理
 				if (response) return checkStatus(response.status);

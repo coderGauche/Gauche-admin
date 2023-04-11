@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:18:08
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-05 23:48:25
+ * @LastEditTime: 2023-04-11 23:51:35
  * @FilePath: /vite-project/src/redux/interface/index.ts
  */
 import type { SizeType } from "antd/lib/config-provider/SizeContext";
@@ -34,8 +34,9 @@ export interface MenuState {
 
 /* TabsState */
 export interface TabsState {
-	tabsActive: string;
-	tabsList: Menu.MenuOptions[];
+	tabsActive?: string;
+	tabsList?: Menu.MenuOptions[];
+	type?: string;
 }
 
 /* BreadcrumbState */
