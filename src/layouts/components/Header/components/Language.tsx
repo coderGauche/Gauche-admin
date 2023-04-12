@@ -2,21 +2,27 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:42:20
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 23:35:32
+ * @LastEditTime: 2023-04-13 00:13:54
  * @FilePath: /vite-project/src/layouts/components/Header/components/Language.tsx
  */
 import i18n from "i18next";
-import { localGet } from "@/utils/util";
+import { getBrowserLang, localGet } from "@/utils/util";
 import { Dropdown, MenuProps } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { setLanguage } from "@/redux/modules/global/action";
 
-const Language = () => {
+const Language = (props: any) => {
 	const [language, setLanguage] = useState(localGet("i18nextLng"));
+
+	useEffect(() => {
+		setLanguage(props.language || getBrowserLang());
+		i18n.changeLanguage(props.language || getBrowserLang());
+	}, [props.language]);
 
 	// changeLanguage
 	const changeLanguage = (val: string) => {
-		i18n.changeLanguage(val);
-		setLanguage(localGet("i18nextLng"));
+		props.setLanguage(val);
 	};
 	const items: MenuProps["items"] = [
 		{
@@ -38,4 +44,7 @@ const Language = () => {
 		</Dropdown>
 	);
 };
-export default Language;
+
+const mapStateToProps = (state: any) => state.global;
+const mapDispatchToProps = { setLanguage };
+export default connect(mapStateToProps, mapDispatchToProps)(Language);

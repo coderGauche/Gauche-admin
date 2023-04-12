@@ -1,3 +1,10 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-26 02:11:37
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-13 00:23:04
+ * @FilePath: /vite-project/src/language/modules/en.ts
+ */
 export default {
 	login: {
 		confirm: "Login",
@@ -13,6 +20,7 @@ export default {
 		closeAll: "All"
 	},
 	header: {
+		home: "home",
 		componentSize: "Component Size",
 		language: "Language",
 		theme: "theme",

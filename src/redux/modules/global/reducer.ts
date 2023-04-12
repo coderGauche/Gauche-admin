@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:51:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 01:01:25
+ * @LastEditTime: 2023-04-13 00:12:05
  * @FilePath: /vite-project/src/redux/modules/global/reducer.ts
  */
 
@@ -32,6 +32,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) =>
 				break;
 			case types.SET_ASSEMBLY_SIZE:
 				draftState.assemblySize = action.assemblySize;
+				break;
+			case types.SET_LANGUAGE:
+				draftState.language = action.language;
 				break;
 			default:
 				return draftState;

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 22:49:05
+ * @LastEditTime: 2023-04-13 00:23:26
  * @FilePath: /vite-project/src/layouts/components/Header/components/AvatarIcon.tsx
  */
 import { useRef } from "react";
@@ -16,12 +16,14 @@ import PasswordModal from "./PasswordModal";
 import { HOME_URL } from "@/config/config";
 import { setToken } from "@/redux/modules/global/action";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 interface ModalProps {
 	showModal: (params: { name: number }) => void;
 }
 const AvatarIcon = (props: any) => {
 	const navigate = useNavigate();
+	const { t } = useTranslation();
 	const infoRef = useRef<ModalProps>(null);
 	const passRef = useRef<ModalProps>(null);
 	const logout = () => {
@@ -41,17 +43,17 @@ const AvatarIcon = (props: any) => {
 	const items: MenuProps["items"] = [
 		{
 			key: "1",
-			label: <span className="dropdown-item">首页</span>,
+			label: <span className="dropdown-item">{t("header.home")}</span>,
 			onClick: () => navigate(HOME_URL)
 		},
 		{
 			key: "2",
-			label: <span className="dropdown-item">个人信息</span>,
+			label: <span className="dropdown-item">{t("header.personalData")}</span>,
 			onClick: () => infoRef.current!.showModal({ name: 11 })
 		},
 		{
 			key: "3",
-			label: <span className="dropdown-item">修改密码</span>,
+			label: <span className="dropdown-item">{t("header.changePassword")}</span>,
 			onClick: () => passRef.current!.showModal({ name: 11 })
 		},
 		{
@@ -59,7 +61,7 @@ const AvatarIcon = (props: any) => {
 		},
 		{
 			key: "4",
-			label: <span className="dropdown-item">退出登录</span>,
+			label: <span className="dropdown-item">{t("header.logout")}</span>,
 			onClick: logout
 		}
 	];

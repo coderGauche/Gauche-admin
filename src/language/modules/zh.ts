@@ -13,6 +13,7 @@ export default {
 		closeAll: "关闭所有"
 	},
 	header: {
+		home: "首页",
 		componentSize: "组件大小",
 		language: "语言",
 		theme: "主题",
