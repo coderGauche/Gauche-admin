@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:00:13
+ * @LastEditTime: 2023-04-12 22:49:05
  * @FilePath: /vite-project/src/layouts/components/Header/components/AvatarIcon.tsx
  */
 import { useRef } from "react";
@@ -24,9 +24,6 @@ const AvatarIcon = (props: any) => {
 	const navigate = useNavigate();
 	const infoRef = useRef<ModalProps>(null);
 	const passRef = useRef<ModalProps>(null);
-	const goHome = () => {
-		navigate(HOME_URL);
-	};
 	const logout = () => {
 		Modal.confirm({
 			title: "温馨提示 🧡",
@@ -43,39 +40,27 @@ const AvatarIcon = (props: any) => {
 	};
 	const items: MenuProps["items"] = [
 		{
-			label: (
-				<span className="dropdown-item" onClick={goHome}>
-					首页
-				</span>
-			),
-			key: "1"
+			key: "1",
+			label: <span className="dropdown-item">首页</span>,
+			onClick: () => navigate(HOME_URL)
 		},
 		{
-			label: (
-				<span className="dropdown-item" onClick={() => infoRef.current!.showModal({ name: 11 })}>
-					个人信息
-				</span>
-			),
-			key: "2"
+			key: "2",
+			label: <span className="dropdown-item">个人信息</span>,
+			onClick: () => infoRef.current!.showModal({ name: 11 })
 		},
 		{
-			label: (
-				<span className="dropdown-item" onClick={() => passRef.current!.showModal({ name: 11 })}>
-					修改密码
-				</span>
-			),
-			key: "3"
+			key: "3",
+			label: <span className="dropdown-item">修改密码</span>,
+			onClick: () => passRef.current!.showModal({ name: 11 })
 		},
 		{
 			type: "divider"
 		},
 		{
-			label: (
-				<span className="dropdown-item" onClick={logout}>
-					退出登录
-				</span>
-			),
-			key: "4"
+			key: "4",
+			label: <span className="dropdown-item">退出登录</span>,
+			onClick: logout
 		}
 	];
 	return (
