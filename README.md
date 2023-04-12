@@ -74,7 +74,7 @@ pnpm run commit
 ### 四、文件资源目录 📚
 
 ```text
-Gauche-Admin
+Geeker-Admin
 ├─ .vscode                # vscode推荐配置
 ├─ public                 # 静态资源文件（忽略打包）
 ├─ src
@@ -84,6 +84,7 @@ Gauche-Admin
 │  ├─ config              # 全局配置项
 │  ├─ enums               # 项目枚举
 │  ├─ hooks               # 常用 Hooks
+│  ├─ language            # 语言国际化
 │  ├─ layouts             # 框架布局
 │  ├─ routers             # 路由管理
 │  ├─ redux               # redux store

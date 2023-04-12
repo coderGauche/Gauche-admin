@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:36:06
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 00:59:43
+ * @LastEditTime: 2023-04-12 23:46:11
  * @FilePath: /vite-project/src/views/proTable/useHooks/index.tsx
  */
 import { DatePicker, Table } from "antd";
@@ -20,6 +20,22 @@ const UseHooks: React.FC<IProps> = (props: any) => {
 	useEffect(() => {
 		console.log(props.authButtons, "authButtons");
 	}, []);
+
+	const dataSource = [
+		{
+			key: "1",
+			name: "胡彦斌",
+			age: 32,
+			address: "西湖区湖底公园1号"
+		},
+		{
+			key: "2",
+			name: "胡彦祖",
+			age: 42,
+			address: "西湖区湖底公园1号"
+		}
+	];
+
 	const columns = [
 		{
 			title: "姓名",
@@ -39,7 +55,7 @@ const UseHooks: React.FC<IProps> = (props: any) => {
 	];
 	return (
 		<>
-			<RangePicker /> <Table dataSource={[]} columns={columns} />
+			<RangePicker /> <Table dataSource={dataSource} columns={columns} />
 		</>
 	);
 };
