@@ -2,10 +2,10 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 18:42:22
+ * @LastEditTime: 2023-04-12 23:15:31
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
-import { Tabs, message } from "antd";
+import { Button, Dropdown, MenuProps, Tabs, message } from "antd";
 // import { HomeFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,6 +16,8 @@ import { searchRoute } from "@/utils/util";
 import { routerArray } from "@/routers";
 import { RootState } from "@/redux";
 import { TabsState } from "@/redux/interface";
+import { DownOutlined } from "@ant-design/icons";
+import { HOME_URL } from "@/config/config";
 
 const LayoutTabs = (props: any) => {
 	const { pathname } = useLocation();
@@ -37,21 +39,47 @@ const LayoutTabs = (props: any) => {
 		setActiveValue(pathname);
 	};
 
-	const delTabs = (tabPath: string) => {
-		if (tabPath === pathname) {
-			props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
-				if (item.path !== tabPath) return;
-				const nextTab = props.tabsList[index + 1] || props.tabsList[index - 1];
-				if (!nextTab) return;
-				navigate(nextTab.path);
-			});
-		}
+	const delTabs = () => {
+		if (pathname === HOME_URL) return;
+		props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
+			if (item.path !== pathname) return;
+			const nextTab = props.tabsList[index + 1] || props.tabsList[index - 1];
+			if (!nextTab) return;
+			navigate(nextTab.path);
+		});
 		message.success("删除Tabs标签 😆😆😆");
-		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
+		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== pathname));
 	};
 	const tabsClick = (path: string) => {
 		navigate(path);
 	};
+
+	// close multipleTab
+	const closeMultipleTab = (tabPath?: string) => {
+		const handleTabsList = props.tabsList.filter((item: Menu.MenuOptions) => {
+			return item.path === tabPath || item.path === HOME_URL;
+		});
+		props.setTabsList(handleTabsList);
+		tabPath ?? navigate(HOME_URL);
+	};
+
+	const items: MenuProps["items"] = [
+		{
+			key: "1",
+			label: <span>关闭当前</span>,
+			onClick: () => delTabs()
+		},
+		{
+			key: "2",
+			label: <span>关闭其它</span>,
+			onClick: () => closeMultipleTab(pathname)
+		},
+		{
+			key: "3",
+			label: <span>关闭所有</span>,
+			onClick: () => closeMultipleTab()
+		}
+	];
 
 	return (
 		<div className="tabs">
@@ -71,9 +99,14 @@ const LayoutTabs = (props: any) => {
 						: []
 				}
 				onEdit={path => {
-					delTabs(path as string);
+					if (path !== HOME_URL) delTabs();
 				}}
 			/>
+			<Dropdown menu={{ items }} placement="bottom" arrow={{ pointAtCenter: true }} trigger={["click"]}>
+				<Button className="more-button" type="primary" size="small">
+					更多 <DownOutlined />
+				</Button>
+			</Dropdown>
 		</div>
 	);
 };
