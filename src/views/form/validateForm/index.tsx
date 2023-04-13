@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:25:28
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:39:02
+ * @LastEditTime: 2023-04-13 23:14:21
  * @FilePath: /vite-project/src/views/form/validateForm/index.tsx
  */
 import { Button, Form, Input, Select, Space, message } from "antd";
@@ -43,7 +43,7 @@ const ValidateForm = () => {
 	};
 
 	return (
-		<Form form={form} name="control-hooks" onFinish={onFinish}>
+		<Form form={form} name="control-hooks" onFinish={onFinish} labelCol={{ span: 1 }}>
 			<Form.Item name="user" label="User" rules={[{ required: true }]}>
 				<Input placeholder="Please enter a user" />
 			</Form.Item>
@@ -57,7 +57,7 @@ const ValidateForm = () => {
 					<Option value="other">other</Option>
 				</Select>
 			</Form.Item>
-			<Form.Item>
+			<Form.Item labelCol={{ span: 1 }}>
 				<Space>
 					<Button type="primary" htmlType="submit">
 						Submit
