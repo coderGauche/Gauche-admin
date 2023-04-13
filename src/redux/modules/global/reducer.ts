@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:51:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 00:12:05
+ * @LastEditTime: 2023-04-13 22:21:09
  * @FilePath: /vite-project/src/redux/modules/global/reducer.ts
  */
 
@@ -20,7 +20,9 @@ const globalState: GlobalState = {
 		// 默认 primary 主题颜色
 		primary: "#1890ff",
 		// 是否开启深色模式
-		isDark: false
+		isDark: false,
+		// 色弱模式(weak) || 灰色模式(gray)
+		weakOrGray: ""
 	}
 };
 
@@ -35,6 +37,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) =>
 				break;
 			case types.SET_LANGUAGE:
 				draftState.language = action.language;
+				break;
+			case types.SET_WEAK_OR_GRAY:
+				draftState.themeConfig.weakOrGray = action.weakOrGray;
 				break;
 			default:
 				return draftState;

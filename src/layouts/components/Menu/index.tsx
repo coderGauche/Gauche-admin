@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:38:41
+ * @LastEditTime: 2023-04-13 22:33:08
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -83,6 +83,7 @@ const LayoutMenu = (props: any) => {
 			// 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
 			const dynamicRouter = handleRouter(data);
 			props.setAuthRouter(dynamicRouter);
+			props.setMenuList(data);
 		} finally {
 			setLoading(false);
 		}
