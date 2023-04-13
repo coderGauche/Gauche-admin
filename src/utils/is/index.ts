@@ -1,7 +1,7 @@
 const toString = Object.prototype.toString;
 
 /**
- * @description: 判断值是否为某个类型
+ * @description: 判断值是否未某个类型
  */
 export function is(val: unknown, type: string) {
 	return toString.call(val) === `[object ${type}]`;
@@ -21,9 +21,6 @@ export const isDef = <T = unknown>(val?: T): val is T => {
 	return typeof val !== "undefined";
 };
 
-/**
- * @description: 是否未定义
- */
 export const isUnDef = <T = unknown>(val?: T): val is T => {
 	return !isDef(val);
 };

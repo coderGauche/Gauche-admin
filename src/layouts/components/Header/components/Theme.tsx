@@ -2,11 +2,11 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:42:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:31:34
+ * @LastEditTime: 2023-04-13 23:35:20
  * @FilePath: /vite-project/src/layouts/components/Header/components/Theme.tsx
  */
 import { setWeakOrGray } from "@/redux/modules/global/action";
-import { Divider, Drawer, Switch } from "antd";
+import { Divider, Drawer, Switch, message } from "antd";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
@@ -51,7 +51,14 @@ const Theme = (props: any) => {
 				<Divider style={{ margin: "0 0 16px 0" }}>主题</Divider>
 				<div className="theme-item">
 					<span>黑暗模式</span>
-					<Switch size="default" />
+					<Switch
+						size="default"
+						checkedChildren={<>🌞</>}
+						unCheckedChildren={<>🌜</>}
+						onChange={() => {
+							message.success("欢迎提交 pull request ✨");
+						}}
+					/>
 				</div>
 				<div className="theme-item">
 					<span>灰色模式</span>
