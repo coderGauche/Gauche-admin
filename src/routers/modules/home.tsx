@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-31 00:00:16
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 00:57:57
+ * @LastEditTime: 2023-04-13 22:42:08
  * @FilePath: /vite-project/src/routers/modules/home.tsx
  */
 import React from "react";
@@ -19,7 +19,7 @@ const homeRouter: Array<RouteObject> = [
 				path: "/home/index",
 				element: <Home />,
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "首页",
 					key: "home"

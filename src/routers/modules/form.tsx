@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:25:33
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:25:42
+ * @LastEditTime: 2023-04-13 22:42:04
  * @FilePath: /vite-project/src/routers/modules/form.tsx
  */
 import React from "react";
@@ -22,7 +22,7 @@ const formRouter: Array<RouteObject> = [
 				path: "/form/basicForm",
 				element: lazyLoad(React.lazy(() => import("@/views/form/basicForm/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "基础 Form",
 					key: "basicForm"
@@ -32,7 +32,7 @@ const formRouter: Array<RouteObject> = [
 				path: "/form/validateForm",
 				element: lazyLoad(React.lazy(() => import("@/views/form/validateForm/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "校验 Form",
 					key: "validateForm"
@@ -42,7 +42,7 @@ const formRouter: Array<RouteObject> = [
 				path: "/form/dynamicForm",
 				element: lazyLoad(React.lazy(() => import("@/views/form/dynamicForm/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "动态 Form",
 					key: "dynamicForm"

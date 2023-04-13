@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-31 00:00:16
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 16:31:08
+ * @LastEditTime: 2023-04-13 22:41:44
  * @FilePath: /vite-project/src/routers/modules/dataScreen.tsx
  */
 import React from "react";
@@ -19,7 +19,7 @@ const dataScreenRouter: Array<RouteObject> = [
 				path: "/dataScreen/index",
 				element: lazyLoad(React.lazy(() => import("@/views/dataScreen/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: false,
 					title: "数据大屏",
 					key: "dataScreen"

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:23:52
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:24:16
+ * @LastEditTime: 2023-04-13 22:41:36
  * @FilePath: /vite-project/src/routers/modules/assembly.tsx
  */
 import React from "react";
@@ -22,7 +22,7 @@ const assemblyRouter: Array<RouteObject> = [
 				path: "/assembly/selectIcon",
 				element: lazyLoad(React.lazy(() => import("@/views/assembly/selectIcon/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "Icon 选择",
 					key: "selectIcon"
@@ -32,7 +32,7 @@ const assemblyRouter: Array<RouteObject> = [
 				path: "/assembly/batchImport",
 				element: lazyLoad(React.lazy(() => import("@/views/assembly/batchImport/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "批量导入数据",
 					key: "selectIcon"

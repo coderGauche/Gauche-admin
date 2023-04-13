@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:41:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:41:37
+ * @LastEditTime: 2023-04-13 22:42:13
  * @FilePath: /vite-project/src/routers/modules/link.tsx
  */
 import React from "react";
@@ -22,7 +22,7 @@ const linkRouter: Array<RouteObject> = [
 				path: "/link/gitee",
 				element: lazyLoad(React.lazy(() => import("@/views/link/gitee/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "Gitee 仓库",
 					key: "gitee"
@@ -32,7 +32,7 @@ const linkRouter: Array<RouteObject> = [
 				path: "/link/github",
 				element: lazyLoad(React.lazy(() => import("@/views/link/github/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "GitHub 仓库",
 					key: "github"
@@ -42,7 +42,7 @@ const linkRouter: Array<RouteObject> = [
 				path: "/link/juejin",
 				element: lazyLoad(React.lazy(() => import("@/views/link/juejin/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "掘金文档",
 					key: "juejin"
@@ -52,7 +52,7 @@ const linkRouter: Array<RouteObject> = [
 				path: "/link/myBlog",
 				element: lazyLoad(React.lazy(() => import("@/views/link/myBlog/index"))),
 				meta: {
-					keepAlive: true,
+					// keepAlive: true,
 					requiresAuth: true,
 					title: "个人博客",
 					key: "myBlog"
