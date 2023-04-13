@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:25:56
+ * @LastEditTime: 2023-04-14 00:00:22
  * @FilePath: /vite-project/src/App.tsx
  */
 import { HashRouter } from "react-router-dom";
@@ -15,8 +15,12 @@ import "moment/dist/locale/zh-cn";
 import { useEffect, useState } from "react";
 import { getBrowserLang } from "@/utils/util";
 import AuthRouter from "@/routers/utils/authRouter";
+import { setWeakOrGray } from "./redux/modules/global/action";
+import useTheme from "./hooks/useTheme";
 const App = (props: any) => {
 	const [i18nLocale, setI18nLocale] = useState(zhCN);
+
+	useTheme(props);
 
 	const setLanguage = () => {
 		// 如果 redux 中有默认语言就设置成 redux 的默认语言，没有默认语言就设置成浏览器默认语言
@@ -40,4 +44,5 @@ const App = (props: any) => {
 	);
 };
 const mapStateToProps = (state: any) => state.global;
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = { setWeakOrGray };
+export default connect(mapStateToProps, mapDispatchToProps)(App);

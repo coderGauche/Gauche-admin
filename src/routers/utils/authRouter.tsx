@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-05 23:35:56
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:28:16
+ * @LastEditTime: 2023-04-13 23:48:51
  * @FilePath: /vite-project/src/routers/utils/authRouter.tsx
  */
 
@@ -37,7 +37,7 @@ const axiosCanceler = new AxiosCanceler();
 // 	if (routerList.indexOf(pathname) == -1) return navigate("/403");
 // };
 
-const AuthRouter = (props: any) => {
+const AuthRouter = (props: { children: JSX.Element }) => {
 	const { pathname } = location; //当前路由的路径（key）
 	const route = searchRoute(pathname, rootRouter); //当前路由全部信息
 	// * 在跳转路由之前，清除所有的请求

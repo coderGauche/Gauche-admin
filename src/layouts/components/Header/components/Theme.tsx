@@ -2,43 +2,27 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:42:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:35:20
+ * @LastEditTime: 2023-04-14 00:05:10
  * @FilePath: /vite-project/src/layouts/components/Header/components/Theme.tsx
  */
 import { setWeakOrGray } from "@/redux/modules/global/action";
+import { FireOutlined } from "@ant-design/icons";
 import { Divider, Drawer, Switch, message } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 
 const Theme = (props: any) => {
 	const [visible, setVisible] = useState(false);
-	const [weakOrGray, setWeakOrGray] = useState<string>(props.themeConfig.weakOrGray);
+	const { weakOrGray } = props.themeConfig;
 
 	const showDrawer = () => {
 		setVisible(true);
-	};
-
-	const onClose = () => {
-		setVisible(false);
-	};
-
-	const initTheme = () => {
-		const body = document.documentElement as HTMLElement;
-		if (!props.themeConfig.weakOrGray) body.setAttribute("style", "");
-		if (props.themeConfig.weakOrGray === "weak") body.setAttribute("style", "filter: invert(80%)");
-		if (props.themeConfig.weakOrGray === "gray") body.setAttribute("style", "filter: grayscale(1)");
-		setWeakOrGray(props.themeConfig.weakOrGray);
 	};
 
 	const onChange = (checked: boolean, theme: string) => {
 		if (checked) return props.setWeakOrGray(theme);
 		props.setWeakOrGray("");
 	};
-
-	useEffect(() => {
-		initTheme();
-	}, [props.themeConfig]);
-
 	return (
 		<>
 			<i
@@ -47,8 +31,19 @@ const Theme = (props: any) => {
 					showDrawer();
 				}}
 			></i>
-			<Drawer title="主题设置" closable={false} onClose={onClose} open={visible}>
-				<Divider style={{ margin: "0 0 16px 0" }}>主题</Divider>
+			<Drawer
+				title="布局设置"
+				closable={false}
+				onClose={() => {
+					setVisible(false);
+				}}
+				open={visible}
+				width={320}
+			>
+				<Divider className="divider">
+					<FireOutlined />
+					全局主题
+				</Divider>
 				<div className="theme-item">
 					<span>黑暗模式</span>
 					<Switch
