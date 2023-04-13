@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:21:01
+ * @LastEditTime: 2023-04-13 23:46:12
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -41,7 +41,7 @@ const LayoutTabs = (props: any) => {
 
 	const delTabs = (tabPath?: string) => {
 		console.log(tabPath);
-		if (pathname === HOME_URL) return;
+		if (tabPath === HOME_URL) return;
 		if (pathname === tabPath) {
 			props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
 				if (item.path !== pathname) return;
