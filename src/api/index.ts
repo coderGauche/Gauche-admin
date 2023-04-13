@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:49:46
+ * @LastEditTime: 2023-04-14 00:13:31
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -93,9 +93,9 @@ class RequestHttp {
 				// 请求超时单独判断，请求超时没有 response
 				if (error.message.indexOf("timeout") !== -1) message.error("请求超时，请稍后再试");
 				// 根据响应的错误状态码，做不同的处理
-				if (response) return checkStatus(response.status);
+				if (response) checkStatus(response.status);
 				// 服务器结果都没有返回(可能服务器错误可能客户端断网) 断网处理:可以跳转到断网页面
-				if (!window.navigator.onLine) return (window.location.hash = "/500");
+				if (!window.navigator.onLine) window.location.hash = "/500";
 				return Promise.reject(error);
 			}
 		);

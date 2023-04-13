@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:04:51
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 00:55:50
+ * @LastEditTime: 2023-04-14 00:25:26
  * @FilePath: /vite-project/src/layouts/index.tsx
  */
 import { Outlet } from "react-router-dom";
@@ -21,12 +21,13 @@ import { updateCollapse } from "@/redux/modules/menu/action";
 
 const LayoutIndex = (props: any) => {
 	const { Sider, Content } = Layout;
+	const { isCollapse, updateCollapse, setAuthButtons } = props;
 	// const { pathname } = useLocation();
 
 	//获取按钮权限
 	const getAuthButtonsList = async () => {
 		const { data } = await getAuthorButtons();
-		props.setAuthButtons(data);
+		setAuthButtons(data);
 	};
 
 	// 监听窗口大小变化
@@ -34,8 +35,8 @@ const LayoutIndex = (props: any) => {
 		window.onresize = () => {
 			return (() => {
 				let screenWidth = document.body.clientWidth;
-				if (props.isCollapse === false && screenWidth < 1200) props.updateCollapse(true);
-				if (props.isCollapse === false && screenWidth > 1200) props.updateCollapse(false);
+				if (isCollapse === false && screenWidth < 1200) updateCollapse(true);
+				if (isCollapse === false && screenWidth > 1200) updateCollapse(false);
 			})();
 		};
 	};
@@ -48,7 +49,7 @@ const LayoutIndex = (props: any) => {
 	return (
 		// 这里不用 Layout 组件原因是切换页面时样式会先错乱然后在正常显示，造成页面闪屏效果
 		<section className="container-box">
-			<Sider style={{ backgroundColor: "#001529" }} trigger={null} collapsed={props.isCollapse} width={220} theme="dark">
+			<Sider style={{ backgroundColor: "#001529" }} trigger={null} collapsed={isCollapse} width={220} theme="dark">
 				<LayoutMenu></LayoutMenu>
 			</Sider>
 			<Layout>

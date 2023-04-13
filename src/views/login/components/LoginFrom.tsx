@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 17:28:09
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:08:58
+ * @LastEditTime: 2023-04-14 00:26:56
  * @FilePath: /vite-project/src/views/login/components/LoginFrom.tsx
  */
 import md5 from "js-md5";
@@ -17,11 +17,14 @@ import { HOME_URL } from "@/config/config";
 import { setToken } from "@/redux/modules/global/action";
 import { connect } from "react-redux";
 import { setTabsList } from "@/redux/modules/tabs/action";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
 	children?: ReactNode;
 }
 const LoginForm: React.FC<IProps> = (props: any) => {
+	const { t } = useTranslation();
+	const { setToken, setTabsList } = props;
 	const navigate = useNavigate();
 	const formRef = React.useRef<FormInstance>(null);
 	const [loading, setLoading] = useState<boolean>(false);
@@ -30,8 +33,8 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 			setLoading(true);
 			loginForm.password = md5(loginForm.password);
 			const { data } = await loginApi(loginForm);
-			props.setToken(data?.access_token);
-			props.setTabsList([]);
+			setToken(data?.access_token);
+			setTabsList([]);
 			message.success("登录成功！");
 			navigate(HOME_URL);
 		} finally {
@@ -64,10 +67,10 @@ const LoginForm: React.FC<IProps> = (props: any) => {
 			</Form.Item>
 			<Form.Item className="login-btn">
 				<Button icon={<CloseCircleOutlined />} htmlType="button" onClick={onReset}>
-					重置
+					{t("login.reset")}
 				</Button>
 				<Button type="primary" loading={loading} icon={<UserOutlined />} htmlType="submit">
-					登录
+					{t("login.confirm")}
 				</Button>
 			</Form.Item>
 		</Form>

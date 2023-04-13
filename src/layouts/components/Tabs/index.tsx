@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:46:12
+ * @LastEditTime: 2023-04-14 00:24:52
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -20,6 +20,7 @@ import { HOME_URL } from "@/config/config";
 import MoreButton from "./components/MoreButton";
 
 const LayoutTabs = (props: any) => {
+	const { tabsList, setTabsList } = props;
 	const { pathname } = useLocation();
 	const [activeValue, setActiveValue] = useState<string>(pathname);
 	const navigate = useNavigate();
@@ -30,11 +31,11 @@ const LayoutTabs = (props: any) => {
 
 	const addTabs = () => {
 		const route = searchRoute(pathname, routerArray);
-		let tabsList: any = props.tabsList ? JSON.parse(JSON.stringify(props.tabsList)) : [];
-		if (props.tabsList.every((item: any) => item.path !== route.path)) {
-			tabsList.push({ title: route.meta!.title, path: route.path });
+		let newTabsList = JSON.parse(JSON.stringify(tabsList));
+		if (tabsList.every((item: any) => item.path !== route.path)) {
+			newTabsList.push({ title: route.meta!.title, path: route.path });
 		}
-		props.setTabsList(tabsList);
+		setTabsList(newTabsList);
 
 		setActiveValue(pathname);
 	};
@@ -43,15 +44,15 @@ const LayoutTabs = (props: any) => {
 		console.log(tabPath);
 		if (tabPath === HOME_URL) return;
 		if (pathname === tabPath) {
-			props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
+			tabsList.forEach((item: Menu.MenuOptions, index: number) => {
 				if (item.path !== pathname) return;
-				const nextTab = props.tabsList[index + 1] || props.tabsList[index - 1];
+				const nextTab = tabsList[index + 1] || tabsList[index - 1];
 				if (!nextTab) return;
 				navigate(nextTab.path);
 			});
 		}
 		message.success("删除Tabs标签 😆😆😆");
-		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
+		setTabsList(tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
 	};
 	const tabsClick = (path: string) => {
 		navigate(path);
@@ -65,8 +66,8 @@ const LayoutTabs = (props: any) => {
 				hideAdd
 				type="editable-card"
 				items={
-					props.tabsList
-						? props.tabsList.map((item: Menu.MenuOptions) => {
+					tabsList
+						? tabsList.map((item: Menu.MenuOptions) => {
 								return {
 									label: item.title,
 									key: item.path

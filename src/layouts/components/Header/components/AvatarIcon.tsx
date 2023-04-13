@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 00:23:26
+ * @LastEditTime: 2023-04-14 00:16:34
  * @FilePath: /vite-project/src/layouts/components/Header/components/AvatarIcon.tsx
  */
 import { useRef } from "react";
@@ -22,6 +22,7 @@ interface ModalProps {
 	showModal: (params: { name: number }) => void;
 }
 const AvatarIcon = (props: any) => {
+	const { setToken } = props;
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const infoRef = useRef<ModalProps>(null);
@@ -34,7 +35,7 @@ const AvatarIcon = (props: any) => {
 			okText: "确认",
 			cancelText: "取消",
 			onOk: () => {
-				props.setToken("");
+				setToken("");
 				message.success("退出登录成功！");
 				navigate("/login");
 			}

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:33:08
+ * @LastEditTime: 2023-04-14 00:22:22
  * @FilePath: /vite-project/src/layouts/components/Menu/index.tsx
  */
 import React, { useEffect, useState } from "react";
@@ -22,6 +22,7 @@ import { setBreadcrumbList } from "@/redux/modules/breadcrumb/action";
 import { setAuthRouter } from "@/redux/modules/auth/action";
 
 const LayoutMenu = (props: any) => {
+	const { isCollapse, setBreadcrumbList, setAuthRouter, setMenuList: setMenuListAction } = props;
 	/**
 	 * React Router v6的hooks 跳转
 	 * 在v6之前的版本中可以直接使用history.push()和history.replace()来传递参数。
@@ -36,8 +37,8 @@ const LayoutMenu = (props: any) => {
 
 	useEffect(() => {
 		setSelectedKeys([pathname]);
-		props.isCollapse ? null : setOpenKeys(getOpenKeys(pathname));
-	}, [pathname, props.isCollapse]);
+		isCollapse ? null : setOpenKeys(getOpenKeys(pathname));
+	}, [pathname, isCollapse]);
 
 	// 设置当前展开的 subMenu
 	const onOpenChange = (openKeys: string[]) => {
@@ -79,11 +80,11 @@ const LayoutMenu = (props: any) => {
 			if (!data) return;
 			setMenuList(deepLoopFloat(data));
 			// 存储处理过后的所有面包屑导航栏到 redux 中
-			props.setBreadcrumbList(findAllBreadcrumb(data));
+			setBreadcrumbList(findAllBreadcrumb(data));
 			// 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
 			const dynamicRouter = handleRouter(data);
-			props.setAuthRouter(dynamicRouter);
-			props.setMenuList(data);
+			setAuthRouter(dynamicRouter);
+			setMenuListAction(data);
 		} finally {
 			setLoading(false);
 		}

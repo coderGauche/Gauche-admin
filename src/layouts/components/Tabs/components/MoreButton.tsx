@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-12 23:36:38
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:43:22
+ * @LastEditTime: 2023-04-14 00:22:37
  * @FilePath: /vite-project/src/layouts/components/Tabs/components/MoreButton.tsx
  */
 import { HOME_URL } from "@/config/config";
@@ -12,7 +12,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const MoreButton = (props: any) => {
-	let { t } = useTranslation();
+	const { t } = useTranslation();
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	// close multipleTab

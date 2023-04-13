@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 23:42:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 00:05:10
+ * @LastEditTime: 2023-04-14 00:19:34
  * @FilePath: /vite-project/src/layouts/components/Header/components/Theme.tsx
  */
 import { setWeakOrGray } from "@/redux/modules/global/action";
@@ -12,6 +12,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 
 const Theme = (props: any) => {
+	const { setWeakOrGray } = props;
 	const [visible, setVisible] = useState(false);
 	const { weakOrGray } = props.themeConfig;
 
@@ -20,8 +21,8 @@ const Theme = (props: any) => {
 	};
 
 	const onChange = (checked: boolean, theme: string) => {
-		if (checked) return props.setWeakOrGray(theme);
-		props.setWeakOrGray("");
+		if (checked) return setWeakOrGray(theme);
+		setWeakOrGray("");
 	};
 	return (
 		<>

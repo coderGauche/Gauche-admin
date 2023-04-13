@@ -1,3 +1,10 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-30 14:59:08
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-14 00:14:28
+ * @FilePath: /vite-project/src/api/modules/user.ts
+ */
 import { ResPage, User } from "@/api/interface/index";
 import { PORT1 } from "@/api/config/servicePort";
 
@@ -18,7 +25,7 @@ export const addUser = (params: { id: string }) => {
 };
 
 // * 批量添加用户
-export const BatchAddUser = (params: any) => {
+export const BatchAddUser = (params: FormData) => {
 	return http.post(PORT1 + `/user/import`, params, { headers: { "Content-Type": "multipart/form-data" } });
 };
 

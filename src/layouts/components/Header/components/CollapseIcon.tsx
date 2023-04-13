@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 22:50:23
+ * @LastEditTime: 2023-04-14 00:16:53
  * @FilePath: /vite-project/src/layouts/components/Header/components/CollapseIcon.tsx
  */
 import { updateCollapse } from "@/redux/modules/menu/action";
@@ -10,14 +10,15 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 
 const CollapseIcon = (props: any) => {
+	const { isCollapse, updateCollapse } = props;
 	return (
 		<div
 			className="collapsed"
 			onClick={() => {
-				props.updateCollapse(!props.isCollapse);
+				updateCollapse(!isCollapse);
 			}}
 		>
-			{props.isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+			{isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 		</div>
 	);
 };
