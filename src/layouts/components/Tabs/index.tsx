@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 23:42:36
+ * @LastEditTime: 2023-04-13 23:21:01
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -39,16 +39,19 @@ const LayoutTabs = (props: any) => {
 		setActiveValue(pathname);
 	};
 
-	const delTabs = () => {
+	const delTabs = (tabPath?: string) => {
+		console.log(tabPath);
 		if (pathname === HOME_URL) return;
-		props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
-			if (item.path !== pathname) return;
-			const nextTab = props.tabsList[index + 1] || props.tabsList[index - 1];
-			if (!nextTab) return;
-			navigate(nextTab.path);
-		});
+		if (pathname === tabPath) {
+			props.tabsList.forEach((item: Menu.MenuOptions, index: number) => {
+				if (item.path !== pathname) return;
+				const nextTab = props.tabsList[index + 1] || props.tabsList[index - 1];
+				if (!nextTab) return;
+				navigate(nextTab.path);
+			});
+		}
 		message.success("删除Tabs标签 😆😆😆");
-		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== pathname));
+		props.setTabsList(props.tabsList.filter((item: Menu.MenuOptions) => item.path !== tabPath));
 	};
 	const tabsClick = (path: string) => {
 		navigate(path);
@@ -72,7 +75,7 @@ const LayoutTabs = (props: any) => {
 						: []
 				}
 				onEdit={path => {
-					if (path !== HOME_URL) delTabs();
+					if (path !== HOME_URL) delTabs(path as string);
 				}}
 			/>
 			<MoreButton delTabs={delTabs} {...props}></MoreButton>

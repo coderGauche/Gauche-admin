@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-12 23:36:38
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 00:15:37
+ * @LastEditTime: 2023-04-13 23:21:16
  * @FilePath: /vite-project/src/layouts/components/Tabs/components/MoreButton.tsx
  */
 import { HOME_URL } from "@/config/config";
@@ -27,7 +27,7 @@ const MoreButton = (props: any) => {
 		{
 			key: "1",
 			label: <span>{t("tabs.closeCurrent")}</span>,
-			onClick: props.delTabs
+			onClick: props.delTabs(pathname)
 		},
 		{
 			key: "2",
