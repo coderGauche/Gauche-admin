@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 00:33:14
+ * @LastEditTime: 2023-04-13 23:26:43
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -14,6 +14,7 @@ import { checkStatus } from "./config/checkStatus";
 import { ResultData } from "./interface";
 import { store } from "@/redux";
 import NProgress from "@/config/nprogress";
+import { setToken } from "@/redux/modules/global/action";
 
 /*
  * @Author: Gauche楽
@@ -72,6 +73,7 @@ class RequestHttp {
 				tryHideFullScreenLoading();
 				// * 登陆失效（code == 599）
 				if (data.code == ResultEnum.OVERDUE) {
+					store.dispatch(setToken(""));
 					message.error(data.msg);
 					window.location.hash = "/login";
 					return Promise.reject(data);

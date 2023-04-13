@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 00:07:29
+ * @LastEditTime: 2023-04-13 23:25:56
  * @FilePath: /vite-project/src/App.tsx
  */
 import { HashRouter } from "react-router-dom";
@@ -14,6 +14,7 @@ import enUs from "antd/lib/locale/en_US";
 import "moment/dist/locale/zh-cn";
 import { useEffect, useState } from "react";
 import { getBrowserLang } from "@/utils/util";
+import AuthRouter from "@/routers/utils/authRouter";
 const App = (props: any) => {
 	const [i18nLocale, setI18nLocale] = useState(zhCN);
 
@@ -31,7 +32,9 @@ const App = (props: any) => {
 	return (
 		<ConfigProvider locale={i18nLocale} componentSize={props.assemblySize}>
 			<HashRouter>
-				<Router />
+				<AuthRouter>
+					<Router />
+				</AuthRouter>
 			</HashRouter>
 		</ConfigProvider>
 	);

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 11:45:27
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 23:17:29
+ * @LastEditTime: 2023-04-13 23:27:12
  * @FilePath: /vite-project/src/routers/index.tsx
  */
 import { Navigate, useRoutes } from "react-router-dom";
@@ -32,6 +32,7 @@ export const rootRouter: RouteObject[] = [
 		path: "/login",
 		element: <Login />,
 		meta: {
+			requiresAuth: false,
 			title: "登录页",
 			key: "login"
 		}
