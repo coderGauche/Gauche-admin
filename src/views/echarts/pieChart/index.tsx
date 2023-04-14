@@ -2,15 +2,15 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 15:09:40
+ * @LastEditTime: 2023-04-14 15:59:58
  * @FilePath: /vite-project/src/views/echarts/pieChart/index.tsx
  */
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import useEcharts from "@/hooks/useEcharts";
 
 const PieChart = () => {
 	const echartsRef = useRef<HTMLDivElement>(null);
+	let myChart: echarts.EChartsType;
 	let option: echarts.EChartsOption = {
 		tooltip: {
 			trigger: "item",
@@ -65,13 +65,23 @@ const PieChart = () => {
 		]
 	};
 
+	const setEcharts = () => {
+		option && myChart.setOption(option);
+	};
+
 	useEffect(() => {
-		const myChart: echarts.EChartsType = echarts.init(echartsRef.current as HTMLDivElement);
-		useEcharts(myChart, option);
+		myChart = echarts.init(echartsRef.current as HTMLDivElement);
+		const echartsResize = () => {
+			myChart && myChart.resize();
+		};
+		window.addEventListener("resize", echartsResize, false);
+
+		setEcharts();
 		return () => {
+			window.removeEventListener("resize", echartsResize);
 			myChart && myChart.dispose();
 		};
-	}, []);
+	});
 
 	return <div ref={echartsRef} className="content-box"></div>;
 };
