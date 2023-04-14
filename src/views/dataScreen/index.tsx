@@ -2,25 +2,26 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:35:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:30:32
+ * @LastEditTime: 2023-04-14 17:44:56
  * @FilePath: /vite-project/src/views/dataScreen/index.tsx
  */
 import { Button } from "antd";
-import React, { memo } from "react";
-import type { ReactNode } from "react";
 import { getAuthorButtons } from "@/api/modules/login";
-
-interface IProps {
-	children?: ReactNode;
-}
-const dataScreen: React.FC<IProps> = () => {
+import AgeRatioChart from "./components/AgeRatioChart";
+const DataScreen = () => {
 	const requestMenuList = async () => {
-		await getAuthorButtons();
+		const res = await getAuthorButtons();
+		console.log(res);
 	};
 	return (
-		<Button type="primary" onClick={requestMenuList}>
-			发起网络请求
-		</Button>
+		<div className="content-box">
+			<span className="text">DataScreen 🍓🍇🍈🍉</span>
+			<Button type="primary" onClick={requestMenuList}>
+				点我发起网络请求 😎
+			</Button>
+			<AgeRatioChart />
+		</div>
 	);
 };
-export default memo(dataScreen);
+
+export default DataScreen;

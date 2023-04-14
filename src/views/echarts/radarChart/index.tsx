@@ -2,15 +2,13 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 16:32:39
+ * @LastEditTime: 2023-04-14 17:42:11
  * @FilePath: /vite-project/src/views/echarts/radarChart/index.tsx
  */
-import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
+import { useEcharts } from "@/hooks/useEcharts";
 
 const RadarChart = () => {
-	const echartsRef = useRef<HTMLDivElement>(null);
-	let myChart: echarts.EChartsType;
 	let option: echarts.EChartsOption = {
 		chart: {
 			alignTicks: false
@@ -56,24 +54,7 @@ const RadarChart = () => {
 		]
 	};
 
-	const setEcharts = () => {
-		option && myChart.setOption(option);
-	};
-
-	useEffect(() => {
-		myChart = echarts.init(echartsRef.current as HTMLDivElement);
-		const echartsResize = () => {
-			myChart && myChart.resize();
-		};
-		window.addEventListener("resize", echartsResize, false);
-
-		setEcharts();
-		return () => {
-			window.removeEventListener("resize", echartsResize);
-			myChart && myChart.dispose();
-		};
-	}, []);
-
+	const [echartsRef] = useEcharts(option);
 	return <div ref={echartsRef} className="content-box"></div>;
 };
 
