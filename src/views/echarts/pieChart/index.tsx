@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 15:59:58
+ * @LastEditTime: 2023-04-14 16:32:45
  * @FilePath: /vite-project/src/views/echarts/pieChart/index.tsx
  */
 import { useEffect, useRef } from "react";
@@ -81,7 +81,7 @@ const PieChart = () => {
 			window.removeEventListener("resize", echartsResize);
 			myChart && myChart.dispose();
 		};
-	});
+	}, []);
 
 	return <div ref={echartsRef} className="content-box"></div>;
 };

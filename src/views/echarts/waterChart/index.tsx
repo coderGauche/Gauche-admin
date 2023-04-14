@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 16:04:16
+ * @LastEditTime: 2023-04-14 16:32:34
  * @FilePath: /vite-project/src/views/echarts/waterChart/index.tsx
  */
 import * as echarts from "echarts";
@@ -295,7 +295,7 @@ const WaterChart = () => {
 			// myChart.dispose() 销毁实例。实例销毁后无法再被使用
 			myChart && myChart.dispose();
 		};
-	});
+	}, []);
 
 	// 只判断数据的变化来动态setEcharts
 	useEffect(() => {

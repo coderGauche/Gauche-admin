@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 16:02:02
+ * @LastEditTime: 2023-04-14 16:32:39
  * @FilePath: /vite-project/src/views/echarts/radarChart/index.tsx
  */
 import { useEffect, useRef } from "react";
@@ -72,7 +72,7 @@ const RadarChart = () => {
 			window.removeEventListener("resize", echartsResize);
 			myChart && myChart.dispose();
 		};
-	});
+	}, []);
 
 	return <div ref={echartsRef} className="content-box"></div>;
 };
