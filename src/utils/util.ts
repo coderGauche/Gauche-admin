@@ -1,11 +1,3 @@
-/*
- * @Author: Gauche楽
- * @Date: 2023-03-26 03:00:25
- * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-31 00:51:28
- * @FilePath: /vite-project/src/utils/util.ts
- */
-
 import { RouteObject } from "@/routers/interface";
 
 /**

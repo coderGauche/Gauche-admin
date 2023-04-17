@@ -1,10 +1,3 @@
-/*
- * @Author: Gauche楽
- * @Date: 2023-04-13 23:36:31
- * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:37:35
- * @FilePath: /vite-project/src/utils/echarts/index.ts
- */
 // * Echarts 按需引入
 import * as echarts from "echarts/core";
 import {

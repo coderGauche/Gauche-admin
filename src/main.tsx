@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-12 23:44:10
+ * @LastEditTime: 2023-04-17 23:45:11
  * @FilePath: /vite-project/src/main.tsx
  */
 import React from "react";
@@ -15,6 +15,7 @@ import "@/styles/reset.less";
 import "virtual:svg-icons-register";
 import "@/assets/iconfont/iconfont.less";
 import "@/language/index";
+import "@/assets/fonts/font.less";
 
 import App from "@/App";
 import { Provider } from "react-redux";
