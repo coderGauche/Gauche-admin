@@ -16,7 +16,7 @@
 
 - 🚀 采用最新技术找开发：React18、React-Router v6、React-Hooks、TypeScript、Vite2
 - 🚀 采用 Vite2 作为项目开发、打包工具（配置了 Gzip 打包、跨域代理、打包预览工具……）
-- 🚀 整个项目集成了 TypeScript （完全是为了想学习 🤣）
+- 🚀 整个项目集成了 TypeScript
 - 🚀 使用 redux 做状态管理，集成 immer、react-redux、redux-persist 开发
 - 🚀 集成了两套状态管理，master 分支使用的是 redux || redux-toolkit 分支使用的是 redux-toolkit
 - 🚀 使用 TypeScript 对 Axios 整个二次封装 （全局错误拦截、常用请求封装、全局请求 Loading、取消重复请求……）
