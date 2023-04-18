@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:23:52
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-18 13:47:14
+ * @LastEditTime: 2023-04-18 14:42:46
  * @FilePath: /vite-project/src/routers/modules/assembly.tsx
  */
 import React from "react";
@@ -18,6 +18,15 @@ const assemblyRouter: Array<RouteObject> = [
 			title: "常用组件"
 		},
 		children: [
+			{
+				path: "/assembly/guide",
+				element: lazyLoad(React.lazy(() => import("@/views/assembly/guide/index"))),
+				meta: {
+					requiresAuth: true,
+					title: "引导页",
+					key: "guide"
+				}
+			},
 			{
 				path: "/assembly/svgIcon",
 				element: lazyLoad(React.lazy(() => import("@/views/assembly/svgIcon/index"))),
