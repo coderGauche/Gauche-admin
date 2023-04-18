@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:51:43
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:21:09
+ * @LastEditTime: 2023-04-18 11:59:53
  * @FilePath: /vite-project/src/redux/modules/global/reducer.ts
  */
 
@@ -37,6 +37,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) =>
 				break;
 			case types.SET_LANGUAGE:
 				draftState.language = action.language;
+				break;
+			case types.SET_DARK:
+				draftState.themeConfig.isDark = action.isDark;
 				break;
 			case types.SET_WEAK_OR_GRAY:
 				draftState.themeConfig.weakOrGray = action.weakOrGray;

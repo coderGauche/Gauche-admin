@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:25:28
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 23:13:02
+ * @LastEditTime: 2023-04-18 13:36:12
  * @FilePath: /vite-project/src/views/form/basicForm/index.tsx
  */
 import { Button, Form, Input, Select, Space, message } from "antd";
@@ -43,34 +43,36 @@ const BasicForm = () => {
 	};
 
 	return (
-		<Form form={form} name="control-hooks" onFinish={onFinish} labelCol={{ span: 1 }}>
-			<Form.Item name="user" label="User">
-				<Input placeholder="Please enter a user" />
-			</Form.Item>
-			<Form.Item name="note" label="Note">
-				<Input placeholder="Please enter a user note" />
-			</Form.Item>
-			<Form.Item name="gender" label="Gender">
-				<Select placeholder="Select a option and change input text above" onChange={onGenderChange} allowClear>
-					<Option value="male">male</Option>
-					<Option value="female">female</Option>
-					<Option value="other">other</Option>
-				</Select>
-			</Form.Item>
-			<Form.Item labelCol={{ span: 1 }}>
-				<Space>
-					<Button type="primary" htmlType="submit">
-						Submit
-					</Button>
-					<Button htmlType="button" onClick={onReset}>
-						Reset
-					</Button>
-					<Button type="link" htmlType="button" onClick={onFill}>
-						Fill form
-					</Button>{" "}
-				</Space>
-			</Form.Item>
-		</Form>
+		<div className="card content-box">
+			<Form form={form} name="control-hooks" onFinish={onFinish} labelCol={{ span: 1 }}>
+				<Form.Item name="user" label="User">
+					<Input placeholder="Please enter a user" />
+				</Form.Item>
+				<Form.Item name="note" label="Note">
+					<Input placeholder="Please enter a user note" />
+				</Form.Item>
+				<Form.Item name="gender" label="Gender">
+					<Select placeholder="Select a option and change input text above" onChange={onGenderChange} allowClear>
+						<Option value="male">male</Option>
+						<Option value="female">female</Option>
+						<Option value="other">other</Option>
+					</Select>
+				</Form.Item>
+				<Form.Item wrapperCol={{ offset: 1 }}>
+					<Space>
+						<Button type="primary" htmlType="submit">
+							Submit
+						</Button>
+						<Button htmlType="button" onClick={onReset}>
+							Reset
+						</Button>
+						<Button type="link" htmlType="button" onClick={onFill}>
+							Fill form
+						</Button>{" "}
+					</Space>
+				</Form.Item>
+			</Form>
+		</div>
 	);
 };
 

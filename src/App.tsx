@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 14:03:48
+ * @LastEditTime: 2023-04-18 11:58:04
  * @FilePath: /vite-project/src/App.tsx
  */
 import { HashRouter } from "react-router-dom";
@@ -20,10 +20,9 @@ import useTheme from "./hooks/useTheme";
 import i18n from "i18next";
 const App = (props: any) => {
 	const { language, assemblySize, setLanguage, themeConfig } = props;
-	const { weakOrGray } = themeConfig;
 	const [i18nLocale, setI18nLocale] = useState(zhCN);
 
-	useTheme(weakOrGray);
+	useTheme(themeConfig);
 
 	const setAntdLanguage = () => {
 		// 如果 redux 中有默认语言就设置成 redux 的默认语言，没有默认语言就设置成浏览器默认语言

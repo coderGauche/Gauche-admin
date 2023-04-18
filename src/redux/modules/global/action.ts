@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:52:01
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:21:10
+ * @LastEditTime: 2023-04-18 11:59:23
  * @FilePath: /vite-project/src/redux/modules/global/action.ts
  */
 import * as types from "@/redux/mutation-types";
@@ -29,4 +29,10 @@ export const setLanguage = (language: string) => ({
 export const setWeakOrGray = (weakOrGray: string) => ({
 	type: types.SET_WEAK_OR_GRAY,
 	weakOrGray
+});
+
+// * setDark
+export const setDark = (isDark: boolean) => ({
+	type: types.SET_DARK,
+	isDark
 });

@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 00:35:05
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 16:30:01
+ * @LastEditTime: 2023-04-18 13:33:51
  * @FilePath: /vite-project/src/views/dashboard/dataVisualize/index.tsx
  */
 import { Tabs } from "antd";
@@ -31,7 +31,7 @@ const DataVisualize = () => {
 
 	return (
 		<div className="dataVisualize-box">
-			<div className="top-box">
+			<div className=" card top-box">
 				<div className="top-title">数据可视化</div>
 				<Tabs
 					defaultActiveKey="1"
@@ -93,7 +93,7 @@ const DataVisualize = () => {
 					</div>
 				</div>
 			</div>
-			<div className="bottom-box">
+			<div className="card bottom-box">
 				<div className="bottom-title">数据来源</div>
 				<div className="bottom-tabs">
 					<Tabs

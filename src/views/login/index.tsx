@@ -1,12 +1,20 @@
-// import { Button, message } from "antd";
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-28 11:46:22
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-18 13:38:35
+ * @FilePath: /vite-project/src/views/login/index.tsx
+ */
+import LoginForm from "./components/LoginFrom";
+import SwitchDark from "@/components/SwitchDark";
 import loginLeft from "@/assets/images/login_left.png";
 import logo from "@/assets/images/logo.png";
 import "./index.less";
-import LoginForm from "./components/LoginFrom";
 
 const Login = () => {
 	return (
 		<div className="login-container">
+			<SwitchDark />
 			<div className="login-box">
 				<div className="login-left">
 					<img src={loginLeft} alt="login" />

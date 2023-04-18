@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-17 23:53:54
+ * @LastEditTime: 2023-04-18 13:35:51
  * @FilePath: /vite-project/src/views/echarts/waterChart/index.tsx
  */
 import * as echarts from "echarts";
@@ -274,7 +274,7 @@ const WaterChart = () => {
 	};
 
 	const [echartsRef] = useEcharts(option, data);
-	return <div ref={echartsRef} className="content-box"></div>;
+	return <div ref={echartsRef} className="card content-box"></div>;
 };
 
 export default WaterChart;

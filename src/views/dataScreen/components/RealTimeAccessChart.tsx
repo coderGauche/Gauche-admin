@@ -1,7 +1,7 @@
 import { useEcharts } from "@/hooks/useEcharts";
 import "echarts-liquidfill";
 import { useState } from "react";
-import "./realTime.less";
+import "./RealTimeAccessChart.less";
 const RealTimeAccessChart = () => {
 	let data = 0.5;
 	const option = {

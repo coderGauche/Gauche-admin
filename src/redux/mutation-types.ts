@@ -1,3 +1,10 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-03-26 02:53:48
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-18 11:59:42
+ * @FilePath: /vite-project/src/redux/mutation-types.ts
+ */
 // 更新 menu 折叠状态
 export const UPDATE_COLLAPSE = "UPDATE_ASIDE_COLLAPSE";
 // 设置 menuList
@@ -22,5 +29,7 @@ export const SET_ASSEMBLY_SIZE = "SET_ASSEMBLY_SIZE";
 export const SET_LANGUAGE = "SET_LANGUAGE";
 // 设置 setThemeConfig
 export const SET_THEME_CONFIG = "SET_THEME_CONFIG";
+// 设置 setDark
+export const SET_DARK = "SET_DARK";
 // 设置 setWeakOrGray
 export const SET_WEAK_OR_GRAY = "SET_WEAK_OR_GRAY";

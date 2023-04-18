@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-04-06 23:24:37
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 17:42:11
+ * @LastEditTime: 2023-04-18 13:35:47
  * @FilePath: /vite-project/src/views/echarts/radarChart/index.tsx
  */
 import * as echarts from "echarts";
@@ -55,7 +55,7 @@ const RadarChart = () => {
 	};
 
 	const [echartsRef] = useEcharts(option);
-	return <div ref={echartsRef} className="content-box"></div>;
+	return <div ref={echartsRef} className="card content-box"></div>;
 };
 
 export default RadarChart;
