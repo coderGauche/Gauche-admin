@@ -1,7 +1,14 @@
+/*
+ * @Author: Gauche楽
+ * @Date: 2023-04-18 14:43:08
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-04-18 14:49:59
+ * @FilePath: /vite-project/src/views/assembly/guide/index.tsx
+ */
 import Driver from "driver.js"; // import driver.js
 import "driver.js/dist/driver.min.css"; // import driver.js css
 import { Button, Alert } from "antd";
-import steps from "./strps";
+import steps from "./steps";
 
 const Guide = () => {
 	const driver = new Driver({
