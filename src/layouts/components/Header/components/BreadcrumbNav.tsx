@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-06 10:29:50
+ * @LastEditTime: 2023-04-18 13:59:07
  * @FilePath: /vite-project/src/layouts/components/Header/components/BreadcrumbNav.tsx
  */
 import { Breadcrumb } from "antd";
@@ -13,7 +13,8 @@ import { BreadcrumbItemType } from "antd/es/breadcrumb/Breadcrumb";
 import { connect } from "react-redux";
 const BreadcrumbNav = (props: any) => {
 	const { pathname } = useLocation();
-	const breadcrumbList = props.breadcrumbList[pathname] || [];
+	const { themeConfig } = props.global;
+	const breadcrumbList = props.breadcrumb.breadcrumbList[pathname] || [];
 	let BreadcrumbItem: BreadcrumbItemType[] = [];
 	breadcrumbList.forEach((e: string) => {
 		if (e !== "首页") {
@@ -25,19 +26,23 @@ const BreadcrumbNav = (props: any) => {
 	});
 
 	return (
-		<Breadcrumb
-			items={[
-				...[
-					{
-						href: HOME_URL,
-						title: <HomeOutlined />
-					}
-				],
-				...BreadcrumbItem
-			]}
-		></Breadcrumb>
+		<>
+			{!themeConfig.breadcrumb && (
+				<Breadcrumb
+					items={[
+						...[
+							{
+								href: HOME_URL,
+								title: <HomeOutlined />
+							}
+						],
+						...BreadcrumbItem
+					]}
+				></Breadcrumb>
+			)}
+		</>
 	);
 };
 
-const mapStateToProps = (state: any) => state.breadcrumb;
+const mapStateToProps = (state: any) => state;
 export default connect(mapStateToProps)(BreadcrumbNav);

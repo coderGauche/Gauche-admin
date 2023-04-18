@@ -1,10 +1,3 @@
-/*
- * @Author: Gauche楽
- * @Date: 2023-03-26 02:53:48
- * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-18 11:59:42
- * @FilePath: /vite-project/src/redux/mutation-types.ts
- */
 // 更新 menu 折叠状态
 export const UPDATE_COLLAPSE = "UPDATE_ASIDE_COLLAPSE";
 // 设置 menuList

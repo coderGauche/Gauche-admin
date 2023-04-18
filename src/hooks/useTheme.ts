@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-26 02:17:14
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-18 13:23:20
+ * @LastEditTime: 2023-04-18 13:57:18
  * @FilePath: /vite-project/src/hooks/useTheme.ts
  */
 import defaultTheme from "../styles/theme/theme-default.less?inline";
@@ -15,6 +15,7 @@ import { ThemeConfigProp } from "@/redux/interface";
 const useTheme = (themeConfig: ThemeConfigProp) => {
 	const { weakOrGray, isDark } = themeConfig;
 	const initTheme = () => {
+		// 灰色和弱色切换
 		const body = document.documentElement as HTMLElement;
 		if (!weakOrGray) body.setAttribute("style", "");
 		if (weakOrGray === "weak") body.setAttribute("style", "filter: invert(80%)");
@@ -25,14 +26,11 @@ const useTheme = (themeConfig: ThemeConfigProp) => {
 		const getStyle = head.getElementsByTagName("style");
 		if (getStyle.length > 0) {
 			for (let i = 0, l = getStyle.length; i < l; i++) {
-				if (getStyle[i]?.getAttribute("data-type") === "theme") {
-					getStyle[i].remove();
-				}
+				if (getStyle[i]?.getAttribute("data-type") === "dark") getStyle[i].remove();
 			}
 		}
 		let styleDom = document.createElement("style");
-		styleDom.dataset.type = "theme";
-		console.log(isDark);
+		styleDom.dataset.type = "dark";
 		styleDom.innerHTML = isDark ? darkTheme : defaultTheme;
 		head.appendChild(styleDom);
 	};
