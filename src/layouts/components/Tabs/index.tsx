@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 00:24:52
+ * @LastEditTime: 2023-04-18 14:31:24
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -14,13 +14,14 @@ import { connect } from "react-redux";
 import { setTabsList } from "@/redux/modules/tabs/action";
 import { searchRoute } from "@/utils/util";
 import { routerArray } from "@/routers";
-import { RootState } from "@/redux";
-import { TabsState } from "@/redux/interface";
 import { HOME_URL } from "@/config/config";
 import MoreButton from "./components/MoreButton";
 
 const LayoutTabs = (props: any) => {
-	const { tabsList, setTabsList } = props;
+	// const { tabsList, setTabsList } = props;
+	const { tabsList } = props.tabs;
+	const { themeConfig } = props.global;
+	const { setTabsList } = props;
 	const { pathname } = useLocation();
 	const [activeValue, setActiveValue] = useState<string>(pathname);
 	const navigate = useNavigate();
@@ -59,31 +60,35 @@ const LayoutTabs = (props: any) => {
 	};
 
 	return (
-		<div className="tabs">
-			<Tabs
-				activeKey={activeValue}
-				onChange={tabsClick}
-				hideAdd
-				type="editable-card"
-				items={
-					tabsList
-						? tabsList.map((item: Menu.MenuOptions) => {
-								return {
-									label: item.title,
-									key: item.path
-								};
-						  })
-						: []
-				}
-				onEdit={path => {
-					if (path !== HOME_URL) delTabs(path as string);
-				}}
-			/>
-			<MoreButton delTabs={delTabs} {...props}></MoreButton>
-		</div>
+		<>
+			{!themeConfig.tabs && (
+				<div className="tabs">
+					<Tabs
+						activeKey={activeValue}
+						onChange={tabsClick}
+						hideAdd
+						type="editable-card"
+						items={
+							tabsList
+								? tabsList.map((item: Menu.MenuOptions) => {
+										return {
+											label: item.title,
+											key: item.path
+										};
+								  })
+								: []
+						}
+						onEdit={path => {
+							if (path !== HOME_URL) delTabs(path as string);
+						}}
+					/>
+					<MoreButton delTabs={delTabs} {...props}></MoreButton>
+				</div>
+			)}
+		</>
 	);
 };
 
-const mapStateToProps = (state: RootState): TabsState => state.tabs;
+const mapStateToProps = (state: any) => state;
 const mapDispatchToProps = { setTabsList };
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutTabs);
