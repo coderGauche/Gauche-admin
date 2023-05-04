@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 22:30:22
+ * @LastEditTime: 2023-05-04 16:41:56
  * @FilePath: /vite-project/vite.config.ts
  */
 import { ConfigEnv, UserConfig, defineConfig, loadEnv } from "vite";
@@ -57,7 +57,7 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
 			}
 		},
 		server: {
-			host: "0.0.0.0", // 服务器主机名，如果允许外部访问，可设置为"0.0.0.0"
+			host: "0.0.0.0", // * 服务器主机名，如果允许外部访问，可设置为"0.0.0.0"
 			open: viteEnv.VITE_OPEN,
 			port: viteEnv.VITE_PORT,
 			cors: true,
