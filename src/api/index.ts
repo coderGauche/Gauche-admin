@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-30 10:36:19
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-14 00:13:31
+ * @LastEditTime: 2023-05-06 00:07:37
  * @FilePath: /vite-project/src/api/index.ts
  */
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -15,14 +15,6 @@ import { ResultData } from "./interface";
 import { store } from "@/redux";
 import NProgress from "@/config/nprogress";
 import { setToken } from "@/redux/modules/global/action";
-
-/*
- * @Author: Gauche楽
- * @Date: 2023-03-30 10:36:19
- * @LastEditors: Gauche楽
- * @LastEditTime: 2023-03-30 10:51:48
- * @FilePath: /vite-project/src/api/index.ts
- */
 const axiosCanceler = new AxiosCanceler();
 
 const config = {

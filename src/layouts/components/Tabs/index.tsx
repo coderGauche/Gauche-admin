@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-28 15:10:26
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-18 14:31:24
+ * @LastEditTime: 2023-05-06 15:00:42
  * @FilePath: /vite-project/src/layouts/components/Tabs/index.tsx
  */
 import { Tabs, message } from "antd";
@@ -82,7 +82,7 @@ const LayoutTabs = (props: any) => {
 							if (path !== HOME_URL) delTabs(path as string);
 						}}
 					/>
-					<MoreButton delTabs={delTabs} {...props}></MoreButton>
+					<MoreButton tabsList={tabsList} delTabs={delTabs} setTabsList={setTabsList}></MoreButton>
 				</div>
 			)}
 		</>
