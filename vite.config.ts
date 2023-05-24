@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-24 15:09:23
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-05-04 16:41:56
+ * @LastEditTime: 2023-05-25 04:27:09
  * @FilePath: /vite-project/vite.config.ts
  */
 import { ConfigEnv, UserConfig, defineConfig, loadEnv } from "vite";
@@ -16,7 +16,7 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import eslintPlugin from "vite-plugin-eslint";
 import { visualizer } from "rollup-plugin-visualizer";
-const baseUrl = "react-admin-vite-antd5";
+// const baseUrl = "react-admin-vite-antd5";
 
 // https://vitejs.dev/config/
 export default defineConfig((config: ConfigEnv): UserConfig => {
@@ -86,7 +86,7 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
 				}
 			}
 		},
-		base: config.mode === "development" ? "/" : `/${baseUrl}/`,
+		// base: config.mode === "development" ? "/" : `/${baseUrl}/`,
 		esbuild: {
 			pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
 		},
@@ -98,12 +98,12 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
 				output: {
 					chunkFileNames: "js/[name]-[hash].js", // 引入文件名的名称
 					entryFileNames: "js/[name]-[hash].js", // 包的入口文件名称
-					assetFileNames: "[ext]/[name]-[hash].[ext]", // 资源文件像 字体，图片等
-					manualChunks(id: any) {
-						if (id.includes("node_modules")) {
-							return id.toString().split("node_modules/")[1].split("/")[0].toString();
-						}
-					}
+					assetFileNames: "[ext]/[name]-[hash].[ext]" // 资源文件像 字体，图片等
+					// manualChunks(id: any) {
+					// 	if (id.includes("node_modules")) {
+					// 		return id.toString().split("node_modules/")[1].split("/")[0].toString();
+					// 	}
+					// }
 				}
 			}
 		}
