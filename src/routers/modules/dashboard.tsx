@@ -2,7 +2,7 @@
  * @Author: Gauche楽
  * @Date: 2023-03-31 00:00:16
  * @LastEditors: Gauche楽
- * @LastEditTime: 2023-04-13 22:41:41
+ * @LastEditTime: 2023-05-25 03:59:18
  * @FilePath: /vite-project/src/routers/modules/dashboard.tsx
  */
 import React from "react";
@@ -20,7 +20,7 @@ const dashboardRouter: Array<RouteObject> = [
 		},
 		children: [
 			{
-				path: "/dashboard/dataVisualize",
+				path: "/dashboard/dataVisualize1",
 				element: lazyLoad(React.lazy(() => import("@/views/dashboard/dataVisualize/index"))),
 				meta: {
 					// keepAlive: true,
@@ -30,7 +30,7 @@ const dashboardRouter: Array<RouteObject> = [
 				}
 			},
 			{
-				path: "/dashboard/embedded",
+				path: "/dashboard/embedded1",
 				element: lazyLoad(React.lazy(() => import("@/views/dashboard/embedded/index"))),
 				meta: {
 					// keepAlive: true,
